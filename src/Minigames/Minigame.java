@@ -6,6 +6,6 @@ public class Minigame {
 		gamefigures gamefigures1 = new gamefigures();    //instanzierung eines Objekts
 		
 		
-		
+		final int swag;
 	}
 }
