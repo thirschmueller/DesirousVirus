@@ -1,4 +1,4 @@
-package Minigames;
+package minigames;
 
 public class Character {
 
@@ -31,19 +31,9 @@ public class Character {
 			this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
 			// Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert ist
 			
-			
-			
-			
-			
-			
-			
+						
 			
 		}
-	
-	
-	
-	
-	
 
 }
 

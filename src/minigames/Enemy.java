@@ -1,4 +1,4 @@
-package Minigames;
+package minigames;
 
 public class Enemy {
 
