@@ -1,5 +1,10 @@
 package minigames;
 
+import java.awt.Image;
+import java.awt.Shape;
+
+import org.newdawn.slick.geom.Circle;
+
 public class Enemy {
 
 	protected int pos_x; 
@@ -19,7 +24,7 @@ public class Enemy {
 		this.hitbox_rad = hitbox_rad;
 		this.speed_x = speed_x;
 		this.speed_y = speed_y;
-		this.hitbox = new Circle(x, y, hitbox_rad);
+		this.hitbox = (Shape) new Circle(x, y, hitbox_rad);
 		
 	}
 	
@@ -28,7 +33,8 @@ public class Enemy {
 			this.pos_x += this.speed_x;
 			this.pos_y += this.speed_y;
 			
-			this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
+			//this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
 			// Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert ist
 		}
+		
 }
