@@ -15,19 +15,22 @@ import javax.swing.JPanel;
 
 //import org.newdawn.slick.AppGameContainer;
 
-public class GUI      { //JFrame Konstruktor einfügen             //implements ActionListener {
+public class GUI      { //JFrame Konstruktor einfÃ¼gen             //implements ActionListener {
+
+//Und  Ã¼ber Superklasse (Vererbung)	
 	
 	
-//Und über Superklasse (Vererbung)	
-	
-		private int count = 0;
-		private JLabel label;
-		private JFrame frame;
+		public final static int Width = 1550, Height = 750;
+		private final JLabel label;
+		private final JFrame window;
 		private JPanel panel;
-	
+		private final DrawArea DA;
+		
+		
 	public GUI() {
 		
-		frame = new JFrame();
+		window = new JFrame();
+		
 		
 		//JButton button = new JButton("Start Game");
 		//button.addActionListener(this);
@@ -37,21 +40,29 @@ public class GUI      { //JFrame Konstruktor einfügen             //implements A
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 500, 500));
-		panel.setLayout(new GridLayout(0, 1));
+//		panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 500, 500));
+//		panel.setLayout(new GridLayout(0, 1));
 		//panel.add(button);
-		panel.add(label);
+//		panel.add(label);
 		
-		frame.add(panel, BorderLayout.CENTER);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Minigame");
-		frame.getContentPane().setBackground(Color.black);
-		frame.pack();
-		frame.setVisible(true);
+		window.setSize(Width, Height);
+//		frame.add(panel, BorderLayout.CENTER);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setTitle("Minigame");
+		window.getContentPane().setBackground(Color.black);
+		window.pack();
+		window.setVisible(true);
+		
+		DA  = new DrawArea(window); 
+		window.add(DA);
+		
 		
 	}
-	public static void main(String[] args) {
-		new GUI();
+//	public static void main(String[] args) {
+//		new GUI();
+	
+	public void run( ) {
+	DA.update();
 	}
 
 		

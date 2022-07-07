@@ -1,41 +1,55 @@
 package minigames;
 
+import java.awt.Image;
+import java.util.Vector;
+
 public class Character {
-
-	protected int pos_x; 
-	protected int pos_y; 
-	protected int speed_x;
-	protected int speed_y; 
-	protected Shape hitbox;
-	protected Image img;          		//LWJGL und Slick implementieren
-	protected int hitbox_rad;
-
+	private final Character pos, vel;
 	
-	public Character (int x, int y, int speed_x, int speed_y, int hitbox_rad)
-	{
-		this.img = img;
-		this.pos_x = x;
-		this.pos_y = y;
-		this.hitbox_rad = hitbox_rad;
-		this.speed_x = speed_x;
-		this.speed_y = speed_y;
-		this.hitbox = new Circle(x, y, hitbox_rad);
+	public Character getVel() {
+		return vel;
+		
+		
+		
+	}
+	public final static int Radius= 20; 
+	
+	
+//	private int speed_x;
+//	private int speed_y; 
+//	private Image img;          	
+	  // Bei Statischen variablen kann man sie mit Klasse.Variable in allen Klassen aufrufen 
+	
+	
+	
+	public Character () {
+	
+		
+		pos = new Character(GUI.Width / 2, GUI.Height / 2); 
+		vel = new Character(2);
 		
 	}
 	
-		public void NewPosition()
-		{
-			this.pos_x += this.speed_x;
-			this.pos_y += this.speed_y;
+	public Character getPos() {
+		return pos;
+	}	
+	
+	
+	public void Update() {             // Update Methode um die neue Position zu berechnen
+		
+		pos.setX(pos.getX() + vel.getX());			// Methodenaufruf --> Klammern
+		pos.setY(pos.getY() + vel.getY());
+	}
+
+		
+
 			
-			this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
+	
+			//this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
 			// Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert ist
 			
-						
-			
-		}
-
 }
+
 
 
 
