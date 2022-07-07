@@ -2,6 +2,7 @@ package minigames;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +13,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.newdawn.slick.AppGameContainer;
+//import org.newdawn.slick.AppGameContainer;
 
-public class GUI { //implements ActionListener {
+public class GUI      { //JFrame Konstruktor einfügen             //implements ActionListener {
 	
+	
+//Und über Superklasse (Vererbung)	
 	
 		private int count = 0;
 		private JLabel label;
@@ -42,13 +45,17 @@ public class GUI { //implements ActionListener {
 		frame.add(panel, BorderLayout.CENTER);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Minigame");
+		frame.getContentPane().setBackground(Color.black);
 		frame.pack();
 		frame.setVisible(true);
-		frame.setBackground(Color.black);
+		
 	}
 	public static void main(String[] args) {
 		new GUI();
 	}
+
+		
+	
 	//@Override
 	//public void actionPerformed(ActionEvent e) {
 		//count++;
