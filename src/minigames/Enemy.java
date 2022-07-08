@@ -3,11 +3,10 @@ package minigames;
 import java.awt.Image;
 import java.awt.Shape;
 
-<<<<<<< Updated upstream
+
 import org.newdawn.slick.geom.Circle;
 
-=======
->>>>>>> Stashed changes
+
 public class Enemy {
 
 	protected int pos_x; 
@@ -32,19 +31,11 @@ public class Enemy {
 			this.pos_x += this.speed_x;
 			this.pos_y += this.speed_y;
 			
-<<<<<<< Updated upstream
-	
+
 			
 		//	this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert ist
-=======
-<<<<<<< Updated upstream
-			//this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
-			// Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert ist
-=======
-			this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
-			// Errechnen des Mittelpunkts, da die Hitbox verschoben und nicht zentralisiert ist
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
+
 		}
 		
 }
