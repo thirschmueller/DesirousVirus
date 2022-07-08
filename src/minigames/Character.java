@@ -8,10 +8,12 @@ public class Character {
 	
 	public Character getVel() {
 		return vel;
-		
-		
-		
 	}
+		
+	public Character getpos() {	
+		return null; 
+	}
+	
 	public final static int Radius= 20; 
 
 	
@@ -24,21 +26,15 @@ public class Character {
 	
 	
 	
-		
-	
-		
-	pos = new Character(GUI.Width / 2, GUI.Height / 2); 
-	vel = new Character(2);
-		
-	
-	public Character getPos() {
-		return null;
-	} 
-		return pos;
-	
+			
+		pos = new Character(GUI.Width / 2, GUI.Height / 2); 
+		vel = new Character(2);
+		
 	
 	
 	public void Update() {             // Update Methode um die neue Position zu berechnen
+		
+	}
 		
 		pos.setX(pos.getX() + vel.getX());			// Methodenaufruf --> Klammern
 		pos.setY(pos.getY() + vel.getY());
