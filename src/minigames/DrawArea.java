@@ -12,6 +12,7 @@ public class DrawArea extends JPanel{
 	
 	private final JFrame parent; 
 	private final Vector2d Ball = new Ball();
+	
 	public final static int Radius = 20;
 	
 	
