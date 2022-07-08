@@ -13,7 +13,7 @@ public class Character {
 		
 	}
 	public final static int Radius= 20; 
-	
+
 	
 //	private int speed_x;
 //	private int speed_y; 
@@ -22,17 +22,20 @@ public class Character {
 	
 	
 	
-	public Character () {
+	
 	
 		
-		pos = new Character(GUI.Width / 2, GUI.Height / 2); 
-		vel = new Character(2);
+	
 		
-	}
+	pos = new Character(GUI.Width / 2, GUI.Height / 2); 
+	vel = new Character(2);
+		
 	
 	public Character getPos() {
+		return null;
+	} 
 		return pos;
-	}	
+	
 	
 	
 	public void Update() {             // Update Methode um die neue Position zu berechnen

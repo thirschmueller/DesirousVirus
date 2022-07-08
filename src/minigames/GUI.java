@@ -15,42 +15,51 @@ import javax.swing.JPanel;
 
 //import org.newdawn.slick.AppGameContainer;
 
-public class GUI      { //JFrame Konstruktor einfügen             //implements ActionListener {
+public class GUI extends JFrame {			//JFrame Konstruktor einfügen             //implements ActionListener {
+	
+
+
 
 //Und  über Superklasse (Vererbung)	
 	
 	
-		public final static int Width = 1550, Height = 750;
-		private final JLabel label;
-		private final JFrame window;
-		private JPanel panel;
+		public final static int Width = 1000, Height = 550;
+//		private final
+		JLabel label;
+//		private final 
+		JFrame window;
+//		private 
+		JPanel panel;
 		private final DrawArea DA;
-		
+	
 		
 	public GUI() {
 		
 		window = new JFrame();
 		
 		
-		//JButton button = new JButton("Start Game");
-		//button.addActionListener(this);
 		
-		label = new JLabel("Hitbox");
+//		JButton button = new JButton("Start Game");
+//		button.addActionListener(this);
+		
+//		label = new JLabel("Hitbox");
 //		label = new JLabel("Number of clicks: 0");
 		
 		
-		JPanel panel = new JPanel();
+//		JPanel panel = new JPanel();
 //		panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 500, 500));
 //		panel.setLayout(new GridLayout(0, 1));
 		//panel.add(button);
 //		panel.add(label);
 		
-		window.setSize(Width, Height);
+
 //		frame.add(panel, BorderLayout.CENTER);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setTitle("Minigame");
 		window.getContentPane().setBackground(Color.black);
+		window.setLocation(125, 75);
 		window.pack();
+		window.setSize(Width, Height);
 		window.setVisible(true);
 		
 		DA  = new DrawArea(window); 
@@ -58,14 +67,14 @@ public class GUI      { //JFrame Konstruktor einfügen             //implements 
 		
 		
 	}
-//	public static void main(String[] args) {
-//		new GUI();
 	
 	public void run( ) {
 	DA.update();
 	}
 
-		
+	public static void main(String[] args) {
+		new GUI();
+	}
 	
 	//@Override
 	//public void actionPerformed(ActionEvent e) {
@@ -73,3 +82,4 @@ public class GUI      { //JFrame Konstruktor einfügen             //implements 
 		//label.setText("Number of clicks: " + count);
 	}
 //}
+

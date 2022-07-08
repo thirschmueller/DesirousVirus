@@ -5,7 +5,7 @@ public class Coordinate {
 	
 private int x, y;
 	
-	public void Character(final int x, final int y) {
+	public void Character(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
