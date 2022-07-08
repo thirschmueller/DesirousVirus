@@ -28,6 +28,7 @@ public class MenuFrame implements ActionListener, Frame  {
     
     public void draw() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocation(600, 400);
         frame.setTitle("Minigame");
         frame.pack();
         frame.setVisible(true);
