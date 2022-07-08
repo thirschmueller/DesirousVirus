@@ -1,4 +1,4 @@
-package minigames.src.controllers;
+package controllers;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

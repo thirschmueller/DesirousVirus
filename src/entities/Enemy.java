@@ -1,4 +1,4 @@
-package minigames;
+package entities;
 
 import java.awt.Image;
 import java.awt.Shape;

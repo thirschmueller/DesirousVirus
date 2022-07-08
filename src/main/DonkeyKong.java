@@ -1,4 +1,4 @@
-package minigames.src;
+package main;
 
 import frames.MenuFrame;
 

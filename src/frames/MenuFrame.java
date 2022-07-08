@@ -1,4 +1,4 @@
-package minigames.src.frames;
+package frames;
 
 import javax.swing.*;
 import java.awt.*;

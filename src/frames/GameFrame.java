@@ -1,12 +1,11 @@
-package minigames.src.frames;
+package frames;
 
 import controllers.MovementController;
-
 import javax.swing.*;
 import java.awt.Frame;
 import java.awt.*;
 
-public class GameFrame implements Frame {
+public class GameFrame extends Frame {
 
     private final static JFrame frame = new JFrame();
 
@@ -22,6 +21,7 @@ public class GameFrame implements Frame {
         frame.addKeyListener(controller);
     }
 
+   
     public void draw() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 1000);

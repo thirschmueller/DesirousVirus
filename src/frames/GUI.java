@@ -1,4 +1,4 @@
-package minigames;
+package frames;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import minigames.DrawArea;
 
 //import org.newdawn.slick.AppGameContainer;
 
@@ -83,14 +85,13 @@ public class GUI extends JFrame {      //implements ActionListener {
 	DA.update();
 	}
 
-	public static void main(String[] args) {
-		new GUI();
+	
 	}
 	
 	//@Override
 	//public void actionPerformed(ActionEvent e) {
 		//count++;
 		//label.setText("Number of clicks: " + count);
-	}
+
 //}
 

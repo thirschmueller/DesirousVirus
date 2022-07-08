@@ -1,5 +1,7 @@
 package minigames;
 
+import controllers.Movement;
+
 public class Minigame {
 
 

@@ -1,4 +1,4 @@
-package minigames;
+package entities;
 
 import java.util.Random;
 
@@ -10,7 +10,7 @@ public class Randomizer_Leukozyten {
 		public class main {
 			public static void main(String[] args) {
 				Random number = new Random();
-				int numbers = number.nextInt(6); //Zufällige Zahlen von 0-5, denn 5 Eingänge von denen Leukozyten kommen können
+				int numbers = number.nextInt(6); //Zufï¿½llige Zahlen von 0-5, denn 5 Eingï¿½nge von denen Leukozyten kommen kï¿½nnen
 				
 			
 				
@@ -38,7 +38,7 @@ public class Randomizer_Leukozyten {
 						{"Leukozyt2", "links", "2"},
 						{"Leukozyt3", "rechts", "3"},
 						{"Leukozyt4", "rechts", "4"},
-						{"Leukozyt5", "links", "5"}}; //Positionen 1-5 sind die Veneneingänge, Ort muss in der GUI definiert werden
+						{"Leukozyt5", "links", "5"}}; //Positionen 1-5 sind die Veneneingï¿½nge, Ort muss in der GUI definiert werden
 				
 			
 				

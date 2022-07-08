@@ -1,4 +1,4 @@
-package minigames;
+package controllers;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
