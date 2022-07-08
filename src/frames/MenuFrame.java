@@ -32,5 +32,7 @@ public class MenuFrame implements ActionListener, Frame  {
         frame.setTitle("Minigame");
         frame.pack();
         frame.setVisible(true);
+        
+        
     }
 }
