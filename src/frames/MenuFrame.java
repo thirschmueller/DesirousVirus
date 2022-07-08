@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuFrame implements ActionListener, Frame {
+public class MenuFrame implements ActionListener, Frame  {
 
     private static final JFrame frame = new JFrame();
 
@@ -21,11 +21,11 @@ public class MenuFrame implements ActionListener, Frame {
         frame.add(panel, BorderLayout.CENTER);
     }
 
-    @Override
+    
     public void actionPerformed(ActionEvent e) {
         new GameFrame().draw();
     }
-
+    
     public void draw() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Minigame");

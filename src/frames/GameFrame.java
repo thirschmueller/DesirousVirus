@@ -2,10 +2,9 @@ package frames;
 
 import controllers.MovementController;
 import javax.swing.*;
-import java.awt.Frame;
 import java.awt.*;
 
-public class GameFrame extends Frame {
+public class GameFrame implements Frame {
 
     private final static JFrame frame = new JFrame();
 
@@ -21,7 +20,7 @@ public class GameFrame extends Frame {
         frame.addKeyListener(controller);
     }
 
-   
+  
     public void draw() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 1000);

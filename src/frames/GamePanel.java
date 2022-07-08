@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		g2D.drawImage(virus, x, y, null);
 	}
 
-	@Override
+																		// Overide überschreibt übergeordnete Klassen (wenn Action performt darüber steht du aber etwas anderes als action haben willst) 
 	public void actionPerformed(ActionEvent e) {
 		if (x>=PANEL_WIDTH-virus.getWidth(null) || x<0) {
 			xVelocity = xVelocity * -1;
