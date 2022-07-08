@@ -12,7 +12,7 @@ import controllers.MovementController;
 
 @SuppressWarnings("serial")
 public class IntersectionImagePanel extends JPanel {
-    private static BufferedImage bgImg, fgImg;
+    private static BufferedImage bgImg;
    
 
     public IntersectionImagePanel() {
@@ -52,8 +52,13 @@ public class IntersectionImagePanel extends JPanel {
         final JLabel label = new JLabel(icon);
         final MovementController controller = new MovementController(label);
         
+        final ImageIcon icon2 = new ImageIcon("resources/pictures/virus.png");
+        final JLabel label2 = new JLabel(icon);
+        final MovementController controller2 = new MovementController(label);
         
         label.setBounds(400, 400, 150, 150);
+        label2.setBounds(600, 600, 150, 150);
+
         
         JFrame frame = new JFrame("IntersectionImage");
         frame.add(label);
