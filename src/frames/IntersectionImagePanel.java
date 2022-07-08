@@ -57,7 +57,8 @@ public class IntersectionImagePanel extends JPanel {
         
         final ImageIcon icon = getScaled(new ImageIcon("resources/pictures/virus.png"), 100);
         final JLabel label = new JLabel(icon);
-        final MovementController controller = new MovementController(label);
+        final MovementController controller = new MovementController(label, bgImg.getWidth(), bgImg.getHeight());
+        
         
         final ImageIcon icon2 = getScaled(new ImageIcon("resources/pictures/leukocyt.png"), 50);
         final JLabel label2 = new JLabel(icon2);
@@ -79,7 +80,7 @@ public class IntersectionImagePanel extends JPanel {
         frame.pack();
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
-       
+        
     }
 	
 		
