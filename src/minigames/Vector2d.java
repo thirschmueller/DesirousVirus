@@ -12,14 +12,14 @@ public class Vector2d {
 	//vel = new Character(2);
 	
 	public Vector2d() { 	// Konstruktor immer mit klammer direkt dahinter --> Leere Klammern also wenn man keine x/y Werte angeben dann sind sie 0/0
-		this.ypos = 0;		// this. --> Dass es weiß, dass man auf das oben definierte Objekt verweist 
+		this.ypos = 0;		// this. --> Dass es weiï¿½, dass man auf das oben definierte Objekt verweist 
 		this.ypos = 0;
 	}
 	
 	public Vector2d(int x, int y) {		
 		this.xpos = x;
 		this.ypos = y;
-	}									//Mehtoden überladen(einmal mit und ohne was in der Klammer, sodass man nicht nur Konstruktor hat sondern auch Variablen ,die man dann wo anders verwenden kann
+	}									//Mehtoden ï¿½berladen(einmal mit und ohne was in der Klammer, sodass man nicht nur Konstruktor hat sondern auch Variablen ,die man dann wo anders verwenden kann
 										//Wenn man einen x/y wert angibt wird der 2. Konstruktor verwendet 
 	
 	public int getX() {
@@ -36,28 +36,23 @@ public class Vector2d {
 		}else {
 			xpos -= speed;
 		}
+	
+	}
+	
+	
+	public void updateMovement() {	// Update Methode fÃ¼r die neue Position
+		xpos += speed;
+		ypos += speed;		
 		
 		
 	
 	}
 	
-
-	
 //	private int speed_x;
-//	private int speed_y; //Mehtoden überladen, sodass man nicht nur Konstruktor hat sondern auch Variablen ,die man dann woanders verwenden kann
+//	private int speed_y; //Mehtoden ï¿½berladen, sodass man nicht nur Konstruktor hat sondern auch Variablen ,die man dann woanders verwenden kann
 
 //	private Image img;          	
 	
-	
-	
-	
-			
-	
-		
-	
-	
-	public void updateMovement() {             // Update Methode um die neue Position zu berechnen
-	}	
 	
 }
 	

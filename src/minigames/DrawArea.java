@@ -11,7 +11,10 @@ public class DrawArea extends JPanel{
 //	private static final long serialVersionUID = 1L;   //Implementieren, dass eclipse kein fehler anzeigt 
 	
 	private final JFrame parent; 
-	private final Vector2d Player = new Vector();
+	private final Vector2d Ball = new Ball();
+	public final static int Radius = 20;
+	
+	
 	
 	public DrawArea(final JFrame j) {
 		parent = j;
@@ -26,7 +29,7 @@ public class DrawArea extends JPanel{
 	@Override
 	public void paint(Graphics g) {			// Paint methode um sachen auf den Bildschirm zu zeichnen 
 		g.setColor(Color.white);    		// Farbe von dem gemalten
-		g.fillOval(Player.getPos().getx, Player.getPos().getY(), Vector.Radius, Vector.Radius);   	// Größe und Position von Character
+		g.fillOval(Player.xpos, Player.ypos, Radius, Radius);   	// Größe und Position von Character
 	}
 		
 

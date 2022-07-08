@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 //import org.newdawn.slick.AppGameContainer;
 
-public class GUI extends JFrame {			//JFrame Konstruktor einfügen             //implements ActionListener {
+public class GUI extends JFrame {      //implements ActionListener {
 	
 
 
