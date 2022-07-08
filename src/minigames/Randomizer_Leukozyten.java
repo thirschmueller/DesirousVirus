@@ -18,7 +18,7 @@ public class Randomizer_Leukozyten {
 				
 				String[]leukozyten; //erste idee allerdings hier nicht wirklich Leukozyten Bild
 				leukozyten = new String[6];
-				leukozyten[o] = "Leukozyten1";
+				leukozyten[0] = "Leukozyten1";
 			    leukozyten[1] = "Leukozyten2";	
 				leukozyten[2] = "Leukozyten3";
 				leukozyten[3] = "Leukozyten4";
