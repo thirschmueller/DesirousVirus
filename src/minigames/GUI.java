@@ -45,6 +45,18 @@ public class GUI extends JFrame {      //implements ActionListener {
 //		label = new JLabel("Hitbox");
 //		label = new JLabel("Number of clicks: 0");
 		
+<<<<<<< Updated upstream
+=======
+		JPanel panel = new JPanel();
+<<<<<<< Updated upstream
+		panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 500, 500));
+=======
+		panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
+>>>>>>> Stashed changes
+		panel.setLayout(new GridLayout(0, 1));
+		panel.add(button);
+		panel.add(label);
+>>>>>>> Stashed changes
 		
 //		JPanel panel = new JPanel();
 //		panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 500, 500));
