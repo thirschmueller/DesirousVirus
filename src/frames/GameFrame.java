@@ -12,7 +12,9 @@ import java.io.File;
 
 public class GameFrame extends java.awt.Frame implements Frame {
 
-    private final static JFrame frame = new JFrame();
+    private static final long serialVersionUID = 1L;		// --> kein fehlercode mehr (jedes Objekt hat eine default UID aber je nach dem welche compiler man implementiert kann es zu problemen kommen) mit der Zeile kann das nicht mehr passieren
+
+	private final static JFrame frame = new JFrame();
     
     
     
@@ -28,7 +30,8 @@ public class GameFrame extends java.awt.Frame implements Frame {
         
         label.setBounds(100, 100, 150, 150);
         
-        final MovementController controller = new MovementController(label);
+        final MovementController controller = new MovementController(label, null);					// ergänzen von null ansonsten fehlermeldung --> muss 2 argumente haben 
+        
 		
         add(label);
         addKeyListener(controller);

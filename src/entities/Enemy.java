@@ -2,40 +2,22 @@ package entities;
 
 import java.awt.Image;
 import java.awt.Shape;
-
-
-import org.newdawn.slick.geom.Circle;
-
+import java.util.Random;
 
 public class Enemy {
 
-	protected int pos_x; 
-	protected int pos_y; 
-	protected int speed_x;
-	protected int speed_y; 
-	protected Image img;          		
-	public final static int Radius= 20;    
-	
-	public Enemy(int x, int y, int speed_x, int speed_y)
-	{
-		this.img = img;
-		this.pos_x = x;
-		this.pos_y = y;
-		this.speed_x = speed_x;
-		this.speed_y = speed_y;
-		
+	private static void RandomNumber() {
+
+		Random number = new Random();
+		int n = number.nextInt(5); // Zuf�llige Zahlen von 0-4, denn 5 Eing�nge von denen Leukozyten kommen
+
+		String[] leukocytes = new String[5];			// zufällige nummer, die die Position zuweist 
+		leukocytes[0] = "leukocyte1";
+		leukocytes[1] = "leukocyte2";
+		leukocytes[2] = "leukocyte3";
+		leukocytes[3] = "leukocyte4";
+		leukocytes[4] = "leukocyte5";
+
 	}
-	
-		public void Update()              // Update Methode um die neue Position zu berechnen
-		{
-			this.pos_x += this.speed_x;
-			this.pos_y += this.speed_y;
-			
-
-			
-		//	this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert ist
-
-
-		}
-		
 }
+

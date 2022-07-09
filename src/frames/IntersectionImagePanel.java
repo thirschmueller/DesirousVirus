@@ -55,7 +55,7 @@ public class IntersectionImagePanel extends JPanel {
 
 	private static void createAndShowGui() {
         IntersectionImagePanel mainPanel = new IntersectionImagePanel();
-        final JFrame frame = new JFrame("IntersectionImage");
+        final JFrame frame = new JFrame();
         
         frame.pack();
         
@@ -86,7 +86,7 @@ public class IntersectionImagePanel extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.addKeyListener(controller);
         frame.getContentPane().add(mainPanel);
-        frame.pack();
+        frame.pack();											// frame.pack nimmt alle inhalte von frame und passt das fenster immer an die größe der Teile an --> Verhältnis bleibt gleich
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
       
@@ -98,6 +98,7 @@ public class IntersectionImagePanel extends JPanel {
          Timer t = new Timer(17, e -> {												// gibt milisekunden an bis zum nächsten update --> 17 = 60fps
         	 new EnemyMovement(component).move(5);									// gibt geschwindigkeit an 
              component.repaint();
+             
          });
          t.start();
      }  
