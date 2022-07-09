@@ -1,18 +1,21 @@
 package controllers;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class MovementController implements KeyListener {
+import javax.swing.JFrame;
+
+public class MovementController extends KeyAdapter { // Keyadapter statt listener (hat schon alles vom Listener drin)
+														// --> Default von Listener (keine Funktion bis dahin)
 	private final Component component;
-	private int winWidth, winHeight;  				// alles was sich von einem Objekt verändert darf nicht static sein
-	
-	public MovementController(final Component component, final int winWidth, final int winHeight) {
-		this.component = component; 
-		this.winWidth = winWidth;
-		this.winHeight = winHeight;
-				
+	private JFrame frame; // alles was sich von einem Objekt verändert darf nicht static sein
+
+	public MovementController(final Component component, final JFrame frame) {
+		this.component = component;
+		this.frame = frame;
+		
+
 	}
 
 	@Override
@@ -20,7 +23,33 @@ public class MovementController implements KeyListener {
 		
 		final int x = component.getX();
 		final int y = component.getY();
+		final Rectangle r = frame.getBounds();
+		final int winWidth = r.width;
+		final int winHeight = r.height;
+		final Rectangle recComponent = component.getBounds();
+		final int compWidth = recComponent.width; 
+		final int compHeight = recComponent.height; 
+						
+			
 
+		if (x > winWidth - compWidth) {
+			component.setLocation(winWidth - (compWidth + 1), y);
+			return;
+		}
+		if (x < 0) {
+			component.setLocation(1, y);
+			return;
+		}
+		if (y > winHeight - compHeight) {
+			component.setLocation(x, winHeight - (compHeight + 1));
+			return;
+		}
+		if (y < 0) {
+			component.setLocation(x, 1);
+			return;
+		}
+
+		
 		switch (e.getKeyCode()) {
 		case 87: // w
 			component.setLocation(x, y - 10);
@@ -46,19 +75,8 @@ public class MovementController implements KeyListener {
 		case 40: // down arrow
 			component.setLocation(x, y + 50);
 			break;
-		}
-		if (x > winWidth-1000)
-			component.setLocation(winWidth -1051, y);
-		if (x < 0)
-			component.setLocation(1, y);
-		if (y > winHeight-1000)
-			component.setLocation(x, winHeight -1051);
-		if (y < 0)
-			component.setLocation(x, 1);
-	}
 
-	@Override
-	public void keyReleased(KeyEvent e) {
+		}
 	}
 
 	@Override

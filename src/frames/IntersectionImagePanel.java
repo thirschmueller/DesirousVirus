@@ -10,6 +10,7 @@ import javax.swing.*;
 
 import controllers.EnemyMovement;
 import controllers.MovementController;
+import controllers.ResizeListener;
 
 @SuppressWarnings("serial")
 public class IntersectionImagePanel extends JPanel {
@@ -43,21 +44,27 @@ public class IntersectionImagePanel extends JPanel {
 		}
 		return super.getPreferredSize();
 	}
-
+	 
+		
 	private static ImageIcon getScaled(final ImageIcon icon, final int size) {
 		Image image = icon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(size, size, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		return new ImageIcon(newimg); // transform it back
-
+		
 	}
 
 	private static void createAndShowGui() {
         IntersectionImagePanel mainPanel = new IntersectionImagePanel();
+        final JFrame frame = new JFrame("IntersectionImage");
         
+        frame.pack();
+        
+//        frame.addComponentListener(new ResizeListener());
+
         
         final ImageIcon icon = getScaled(new ImageIcon("resources/pictures/virus.png"), 100);
         final JLabel label = new JLabel(icon);
-        final MovementController controller = new MovementController(label, bgImg.getWidth(), bgImg.getHeight());
+     
         
         
         final ImageIcon icon2 = getScaled(new ImageIcon("resources/pictures/leukocyt.png"), 50);
@@ -66,12 +73,13 @@ public class IntersectionImagePanel extends JPanel {
         label.setBounds(400, 400, 150, 150);
         label2.setBounds(600, 600, 50, 50);
         
+        final MovementController controller = new MovementController(label, frame);
+        
         initTimer(label2);
                          
         
         
-        
-        JFrame frame = new JFrame("IntersectionImage");
+      
         frame.add(label);
         frame.add(label2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,13 +88,14 @@ public class IntersectionImagePanel extends JPanel {
         frame.pack();
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
+      
         
     }
 	
 		
 	 private static void initTimer(final Component component) {
-         Timer t = new Timer(40, e -> {
-        	 new EnemyMovement(component).move(10);
+         Timer t = new Timer(10, e -> {
+        	 new EnemyMovement(component).move(2);
              component.repaint();
          });
          t.start();
