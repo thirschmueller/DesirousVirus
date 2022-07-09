@@ -17,24 +17,24 @@ public class GameFrame extends java.awt.Frame implements Frame {
     
     
     
-    public GameFrame() {
+    public GameFrame() {									// Konstruktor immer mit klammer direkt dahinter --> Leere Klammern also keine Argumente
     	
     	final ImageIcon icon = new ImageIcon("resources/pictures/virus.png");
     	    	
     	
-        final JLabel label = new JLabel(icon);	
+        final JLabel label = new JLabel(icon);				//instanzierung eines Objekts
         
         
         
-        label.setBounds(400, 400, 150, 150);
-
+        label.setBounds(100, 100, 150, 150);
+        
         final MovementController controller = new MovementController(label);
-
+		
         add(label);
         addKeyListener(controller);
         
         a = new ImageIcon("resources/pictures/veins.jpg");
-      //frame.setSize(1000, 1000);      
+       
         
     }
 
@@ -61,7 +61,7 @@ public class GameFrame extends java.awt.Frame implements Frame {
         setSize(a.getIconWidth(), a.getIconHeight());
         addWindowListener(wl);
         setLocationRelativeTo(null);
-  //    frame.setLocation(400, 20);
+   //     frame.setLocation(400, 20);
    //   frame.setLayout(null);
         setTitle("Minigame");
         final ImageIcon icon = new ImageIcon("resources/pictures/veins.jpg");

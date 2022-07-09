@@ -14,7 +14,7 @@ public class Enemy {
 	protected int speed_x;
 	protected int speed_y; 
 	protected Image img;          		
-	public final static int Radius= 20;   // Bei Statischen variablen kann man sie mit Klasse.Variable in allen Klassen aufrufen 
+	public final static int Radius= 20;    
 	
 	public Enemy(int x, int y, int speed_x, int speed_y)
 	{

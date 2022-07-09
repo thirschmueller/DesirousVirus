@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements ActionListener{
-	
+public class GamePanel extends JPanel implements ActionListener{			// extends nutzen, wenn man eine child klasse ableitet oder erstellt von der parent class(super class) 
+																			//implements wenn man ein interface implementieren will
 	final int PANEL_WIDTH = 1280;
 	final int PANEL_HEIGHT = 720;
 	Image virus;
@@ -44,8 +44,8 @@ public class GamePanel extends JPanel implements ActionListener{
 		g2D.drawImage(virus, x, y, null);
 	}
 
-																		// Overide überschreibt übergeordnete Klassen (wenn Action performt darüber steht du aber etwas anderes als action haben willst) 
-	public void actionPerformed(ActionEvent e) {
+																		 
+	public void actionPerformed(ActionEvent e) {					//void, weil darin etwas berechnet wird oder dargestellt wird aber nicht wieder returnt werden muss (muss nicht außerhalb davon verwendet werden)
 		if (x>=PANEL_WIDTH-virus.getWidth(null) || x<0) {
 			xVelocity = xVelocity * -1;
 			

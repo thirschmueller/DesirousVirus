@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import minigames.DrawArea;
 
 //import org.newdawn.slick.AppGameContainer;
 
@@ -32,7 +31,7 @@ public class GUI extends JFrame {      //implements ActionListener {
 		JFrame window;
 //		private 
 		JPanel panel;
-		private final DrawArea DA;
+	
 	
 		
 	public GUI() {
@@ -75,14 +74,14 @@ public class GUI extends JFrame {      //implements ActionListener {
 		window.setSize(Width, Height);
 		window.setVisible(true);
 		
-		DA  = new DrawArea(window); 
-		window.add(DA);
+		
+		
 		
 		
 	}
 	
 	public void run( ) {
-	DA.update();
+//	DA.update();
 	}
 
 	

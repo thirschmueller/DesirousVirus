@@ -26,11 +26,11 @@ public class IntersectionImagePanel extends JPanel {
 	}
 
 	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	protected void paintComponent(Graphics g) {					// Paint methode um sachen auf den Bildschirm zu zeichnen 
+		super.paintComponent(g);					
 
 		if (bgImg != null) {
-			g.drawImage(bgImg, 0, 0, this);
+			g.drawImage(bgImg, -450, 0, this);						// Größe und Position von Backroundimage
 		}
 
 	}
@@ -48,7 +48,7 @@ public class IntersectionImagePanel extends JPanel {
 		
 	private static ImageIcon getScaled(final ImageIcon icon, final int size) {
 		Image image = icon.getImage(); // transform it
-		Image newimg = image.getScaledInstance(size, size, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		Image newimg = image.getScaledInstance(size, size, java.awt.Image.SCALE_SMOOTH); 					// scale it the smooth way
 		return new ImageIcon(newimg); // transform it back
 		
 	}
@@ -62,12 +62,13 @@ public class IntersectionImagePanel extends JPanel {
 //        frame.addComponentListener(new ResizeListener());
 
         
-        final ImageIcon icon = getScaled(new ImageIcon("resources/pictures/virus.png"), 100);
+        final ImageIcon icon = getScaled(new ImageIcon("resources/pictures/virus.png"), 100);				
+																											
         final JLabel label = new JLabel(icon);
      
         
         
-        final ImageIcon icon2 = getScaled(new ImageIcon("resources/pictures/leukocyt.png"), 50);
+        final ImageIcon icon2 = getScaled(new ImageIcon("resources/pictures/leukocyt.png"), 50);			
         final JLabel label2 = new JLabel(icon2);
         
         label.setBounds(400, 400, 150, 150);
@@ -94,16 +95,16 @@ public class IntersectionImagePanel extends JPanel {
 	
 		
 	 private static void initTimer(final Component component) {
-         Timer t = new Timer(10, e -> {
-        	 new EnemyMovement(component).move(2);
+         Timer t = new Timer(17, e -> {												// gibt milisekunden an bis zum nächsten update --> 17 = 60fps
+        	 new EnemyMovement(component).move(5);									// gibt geschwindigkeit an 
              component.repaint();
          });
          t.start();
      }  
 	 
-	 
-	 
-	 
+	 	 
+	 																					//Mehtoden ueberladen(Verschiedene sachen in der Klammer, sodass man nicht nur für 1 fall Konstruktoren hat sondern auch Variablen ,die man dann wo anders verwenden kann
+	 																					//Wenn man einen x/y wert angibt wird der 2. Konstruktor verwendet 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(IntersectionImagePanel::createAndShowGui);
 	}

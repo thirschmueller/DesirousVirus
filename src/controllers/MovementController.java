@@ -6,14 +6,23 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
-public class MovementController extends KeyAdapter { // Keyadapter statt listener (hat schon alles vom Listener drin)
-														// --> Default von Listener (keine Funktion bis dahin)
-	private final Component component;
-	private JFrame frame; // alles was sich von einem Objekt verändert darf nicht static sein
+public class MovementController extends KeyAdapter { 		
+	/* Keyadapter statt listener (hat schon alles vom Listener drin) Extend this class to create a {@code KeyEvent} listener
+	   		 * and override the methods for the events of interest. (If you implement the
+			 * {@code KeyListener} interface, you have to define all of
+			 * the methods in it. This abstract class defines null methods for them
+			 * all, so you can only have to define methods for events you care about.)
+			 * Default von Listener (keine Funktion bisher) --> Man definiert selbst die die man braucht 
+	 */
 
+												 
+	private final Component component;
+	private JFrame frame; 												// alles was sich von einem Objekt verändert darf nicht static sein aber bei Statischen variablen kann man sie mit Klasse.Variable in allen Klassen aufrufen
+	
+	
 	public MovementController(final Component component, final JFrame frame) {
 		this.component = component;
-		this.frame = frame;
+		this.frame = frame;												// this. --> Dass es weiss dass man auf das oben definierte Objekt verweist 
 		
 
 	}
@@ -52,16 +61,16 @@ public class MovementController extends KeyAdapter { // Keyadapter statt listene
 		
 		switch (e.getKeyCode()) {
 		case 87: // w
-			component.setLocation(x, y - 10);
+			component.setLocation(x, y - 20);
 			break;
 		case 65: // a
-			component.setLocation(x - 10, y);
+			component.setLocation(x - 20, y);
 			break;
 		case 83: // s
-			component.setLocation(x, y + 10);
+			component.setLocation(x, y + 20);
 			break;
 		case 68: // d
-			component.setLocation(x + 10, y);
+			component.setLocation(x + 20, y);
 			break;
 		case 37: // left arrow
 			component.setLocation(x - 50, y);
@@ -78,8 +87,19 @@ public class MovementController extends KeyAdapter { // Keyadapter statt listene
 
 		}
 	}
-
-	@Override
+		
+	
+	//this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y - this.hitbox_rad / 2); 	//set Location? 
+	// Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert ist
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override												// Overide überschreibt übergeordnete Klassen (wenn Action performt darüber steht du aber etwas anderes als action haben willst)
 	public void keyTyped(KeyEvent e) {
 		System.out.println("Pressed: " + e.getKeyChar() + ", (code: " + e.getKeyCode() + ")");
 	}
