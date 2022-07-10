@@ -1,4 +1,6 @@
-package src;
+package src.behavior;
+
+import src.entities.Player;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

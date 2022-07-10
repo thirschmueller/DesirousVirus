@@ -1,5 +1,10 @@
 package src;
 
+import src.behavior.EnemySpawner;
+import src.behavior.MovementController;
+import src.entities.Player;
+import src.utils.BufferedImageUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
