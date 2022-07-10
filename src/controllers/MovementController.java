@@ -30,35 +30,35 @@ public class MovementController extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 
-		int x = component.getX();
+		int x = component.getX(); // getter sind für x/y predefined
 		int y = component.getY();
-		final Rectangle r = frame.getBounds();
+		final Rectangle r = frame.getBounds(); // auch predefined für bounds
 		final int winWidth = r.width;
 		final int winHeight = r.height;
 		final Rectangle recComponent = component.getBounds();
 		final int compWidth = recComponent.width;
 		final int compHeight = recComponent.height;
 
-		if (x > winWidth - compWidth) {										//weil man obere Linke ecke trackt --> - compwidth
-			component.setLocation(winWidth - (compWidth + 1), y);			//rechts
-			return;
+		if (x > winWidth - compWidth) { // weil man obere Linke ecke trackt --> - compwidth
+			component.setLocation(winWidth - compWidth, y); // rechts
+			return; // wegen void heißt das nur abbrechen, weil man kein return wert hat
 		}
 		if (x < 0) {
-			component.setLocation(1, y);									// Links
+			component.setLocation(0, y); // Links
 			return;
 		}
-		if (y > winHeight - compHeight) {									//unten
-			component.setLocation(x, winHeight - (compHeight + 1));
+		if (y > winHeight - compHeight) { // unten
+			component.setLocation(x, winHeight - compHeight);
 			return;
 		}
-		if (y < 0) {														//oben
-			component.setLocation(x, 1);
+		if (y < 0) { // oben
+			component.setLocation(x, 0);
 			return;
 		}
 
 		switch (e.getKeyCode()) {
 		case 87: // w
-			component.setLocation(x, y - 20);
+			component.setLocation(x, y - 20); // set location ist predefined und setzt die loacation für component
 			break;
 		case 65: // a
 			component.setLocation(x - 20, y);
@@ -119,26 +119,7 @@ public class MovementController extends KeyAdapter {
 		}
 	}
 
-	public void update() {
-		x += velX;
-		y += velY;
-	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	public void setVelX(int velX) {
-		this.velX = velX;
-	}
-
-	public void setVelY(int velY) {
-		this.velY = velY;
-	}
 
 	// this.hitbox.Location(this.pos_x - this.hitbox_rad / 2, this.pos_y -
 	// this.hitbox_rad / 2); //set Location?

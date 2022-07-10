@@ -10,7 +10,7 @@ import javax.swing.*;
 
 import controllers.EnemyMovement;
 import controllers.MovementController;
-import controllers.ResizeListener;
+
 
 @SuppressWarnings("serial")
 public class IntersectionImagePanel extends JPanel {
