@@ -1,4 +1,6 @@
-package src;
+package src.behavior;
+
+import src.entities.Enemy;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
