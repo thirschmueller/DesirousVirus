@@ -19,12 +19,12 @@ public class GUI extends JFrame { // implements ActionListener {
 
 	public final static int Width = 1000, Height = 550;
 	JLabel label;
-	JFrame window;
+	JFrame frame;
 	JPanel panel;
 
 	public GUI() {
 
-		window = new JFrame();
+		frame = new JFrame();
 
 //		JButton button = new JButton("Start Game");
 //		button.addActionListener(this);
@@ -49,13 +49,13 @@ public class GUI extends JFrame { // implements ActionListener {
 //		panel.add(label);
 
 //		frame.add(panel, BorderLayout.CENTER);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setTitle("Minigame");
-		window.getContentPane().setBackground(Color.black);
-		window.setLocation(125, 75);
-		window.pack();
-		window.setSize(Width, Height);				// setSize() benutzen, wenn die parents keinen layout manager(z.B. set Layout Boxlayout) haben
-		window.setVisible(true);				    // setPreferredSize() hängt mit setMinimumSize und setMaximumSize zusammen --> benutzen, wenn ein parent layout manager vorhanden ist
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Minigame");
+		frame.getContentPane().setBackground(Color.black);
+		frame.setLocation(125, 75);
+		frame.pack();
+		frame.setSize(Width, Height);				// setSize() benutzen, wenn die parents keinen layout manager(z.B. set Layout Boxlayout) haben
+		frame.setVisible(true);				    // setPreferredSize() hängt mit setMinimumSize und setMaximumSize zusammen --> benutzen, wenn ein parent layout manager vorhanden ist
 	}
 
 	public void run() {
