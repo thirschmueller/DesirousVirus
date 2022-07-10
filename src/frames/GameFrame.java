@@ -29,7 +29,7 @@ public class GameFrame extends java.awt.Frame implements Frame {
         
         label.setBounds(100, 100, 150, 150);
         
-        final MovementController controller = new MovementController(label, null);					// ergänzen von null ansonsten fehlermeldung --> muss 2 argumente haben 
+        final MovementController controller = new MovementController(label, frame);					// ergänzen von null ansonsten fehlermeldung --> muss 2 argumente haben 
         
 		
         add(label);
@@ -63,7 +63,7 @@ public class GameFrame extends java.awt.Frame implements Frame {
         setSize(a.getIconWidth(), a.getIconHeight());
         addWindowListener(wl);
         setLocationRelativeTo(null);
-   //     frame.setLocation(400, 20);
+   //   frame.setLocation(400, 20);
    //   frame.setLayout(null);
         setTitle("Minigame");
         final ImageIcon icon = new ImageIcon("resources/pictures/veins.jpg");
@@ -71,7 +71,7 @@ public class GameFrame extends java.awt.Frame implements Frame {
         
         
         SwingUtilities.invokeLater(new Runnable(){
-            @Override
+            
             public void run() {
                 new ImageOnImage(new ImageIcon("resources/pictures/veins.jpg"), new ImageIcon("resources/pictures/veins.jpg"));
             }

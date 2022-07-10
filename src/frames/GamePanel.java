@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements ActionListener{			// extends nu
 
 																		 
 	public void actionPerformed(ActionEvent e) {					//void, weil darin etwas berechnet wird oder dargestellt wird aber nicht wieder returnt werden muss (muss nicht außerhalb davon verwendet werden)
-		if (x>=PANEL_WIDTH-virus.getWidth(null) || x<0) {
+		if (x>=PANEL_WIDTH-virus.getWidth(null) || x<0) {			// || = oder 
 			xVelocity = xVelocity * -1;
 			
 		}

@@ -86,7 +86,7 @@ public class MovementController extends KeyAdapter {
 
 	}
 
-	public void keyReleased(KeyEvent e) {					//for smooth movement
+	public void keyReleased(KeyEvent e) { // for smooth movement
 
 		int x = component.getX();
 		int y = component.getY();
@@ -118,7 +118,6 @@ public class MovementController extends KeyAdapter {
 			break;
 		}
 	}
-
 
 	public void update() {
 		x += velX;
