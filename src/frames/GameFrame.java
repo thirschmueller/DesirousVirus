@@ -1,7 +1,6 @@
 package frames;
 
 import controllers.MovementController;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +49,7 @@ public class GameFrame extends java.awt.Frame implements Frame {
     };
 
     public void paint(Graphics g) {
-        super.paint(g);
+        super.paint(g);						//super ist eine Referenz auf die Elternklasse. Hier wird der Konstruktor der Basisklasse aufgerufen
         g.drawImage(a.getImage(), 0, 0, this);
     }
     

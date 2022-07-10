@@ -22,13 +22,12 @@ public class MovementController extends KeyAdapter {
 							// Statischen variablen kann man sie mit Klasse.Variable in allen Klassen
 							// aufrufen
 
-	public MovementController(final Component component, final JFrame frame) {
+	public MovementController(final Component component, final JFrame frame) { // Konstruktor
 		this.component = component;
 		this.frame = frame; // this. --> Dass es weiss dass man auf das oben definierte Objekt verweist
 
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e) {
 
 		int x = component.getX();
@@ -40,19 +39,19 @@ public class MovementController extends KeyAdapter {
 		final int compWidth = recComponent.width;
 		final int compHeight = recComponent.height;
 
-		if (x > winWidth - compWidth) {
-			component.setLocation(winWidth - (compWidth + 1), y);
+		if (x > winWidth - compWidth) {										//weil man obere Linke ecke trackt --> - compwidth
+			component.setLocation(winWidth - (compWidth + 1), y);			//rechts
 			return;
 		}
 		if (x < 0) {
-			component.setLocation(1, y);
+			component.setLocation(1, y);									// Links
 			return;
 		}
-		if (y > winHeight - compHeight) {
+		if (y > winHeight - compHeight) {									//unten
 			component.setLocation(x, winHeight - (compHeight + 1));
 			return;
 		}
-		if (y < 0) {
+		if (y < 0) {														//oben
 			component.setLocation(x, 1);
 			return;
 		}
@@ -87,33 +86,10 @@ public class MovementController extends KeyAdapter {
 
 	}
 
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) {					//for smooth movement
 
 		int x = component.getX();
 		int y = component.getY();
-		final Rectangle r = frame.getBounds();
-		final int winWidth = r.width;
-		final int winHeight = r.height;
-		final Rectangle recComponent = component.getBounds();
-		final int compWidth = recComponent.width;
-		final int compHeight = recComponent.height;
-
-		if (x > winWidth - compWidth) {
-			component.setLocation(winWidth - (compWidth + 1), y);
-			return;
-		}
-		if (x < 0) {
-			component.setLocation(1, y);
-			return;
-		}
-		if (y > winHeight - compHeight) {
-			component.setLocation(x, winHeight - (compHeight + 1));
-			return;
-		}
-		if (y < 0) {
-			component.setLocation(x, 1);
-			return;
-		}
 
 		switch (e.getKeyCode()) {
 		case 87: // w
@@ -143,10 +119,6 @@ public class MovementController extends KeyAdapter {
 		}
 	}
 
-	private int x;
-	private int y;
-	private int velX = 0;
-	private int velY = 0;
 
 	public void update() {
 		x += velX;

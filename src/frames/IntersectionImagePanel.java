@@ -25,7 +25,7 @@ public class IntersectionImagePanel extends JPanel {
 		}
 	}
 
-	@Override
+	
 	protected void paintComponent(Graphics g) {					// Paint methode um sachen auf den Bildschirm zu zeichnen 
 		super.paintComponent(g);					
 
@@ -35,7 +35,7 @@ public class IntersectionImagePanel extends JPanel {
 
 	}
 
-	@Override
+	
 	public Dimension getPreferredSize() {
 		if (bgImg != null) {
 			int width = bgImg.getWidth();
@@ -44,7 +44,7 @@ public class IntersectionImagePanel extends JPanel {
 		}
 		return super.getPreferredSize();
 	}
-	 
+	 	
 		
 	private static ImageIcon getScaled(final ImageIcon icon, final int size) {
 		Image image = icon.getImage(); // transform it
