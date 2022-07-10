@@ -105,8 +105,8 @@ public class IntersectionImagePanel extends JPanel {
      }  
 	 
 	 	 
-	
-
+	 
+	 
 	//Mehtoden ueberladen(Verschiedene sachen in der Klammer, sodass man nicht nur für 1 fall Konstruktoren hat sondern auch Variablen ,die man dann wo anders verwenden kann
 	 																					//Wenn man einen x/y wert angibt wird der 2. Konstruktor verwendet 
 	public static void main(String[] args) {

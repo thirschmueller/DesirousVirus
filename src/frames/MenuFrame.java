@@ -2,7 +2,8 @@ package frames;
 
 import javax.swing.*;
 
-
+import controllers.MovementController;
+import src.Game;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -96,7 +97,8 @@ public class MenuFrame implements ActionListener, Frame {
 		public void actionPerformed1(ActionEvent e) {
 			
 			if(e.getSource() == button1) {
-				IntersectionImagePanel gamePanel = new IntersectionImagePanel();
+				Game gamePanel = new Game();
+				
 				frame.dispose();
 			}
 			else if(e.getSource()==button2) {

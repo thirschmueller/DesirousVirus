@@ -1,9 +1,9 @@
-package src.behavior;
-
-import src.entities.Player;
+package behavior;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import entities.Player;
 
 public class MovementController extends KeyAdapter {
 

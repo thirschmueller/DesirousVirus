@@ -1,56 +1,66 @@
 package entities;
 
-import java.awt.Rectangle;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Player {
-	private int x;
-	private int y;
-	private int velX = 0;
-	private int velY = 0;
+    private double x;
+    private double y;
 
-	public Player(int x, int y, int velX, int velY) {
-		this.x = x;
-		this.y = y;
-		this.velX = velX;
-		this.velY = velY;
-	}
+    private BufferedImage playerImg;
 
-//	public void tick() {
-//		x += velX;
-//		y += velY;
-//	}
+    private double velX;
+    private double velY;
 
-	public int getX() {
-		return x;
-	}
+    private boolean isLookingLeft = true;
 
-	public void setX(int x) {
-		this.x = x;
-	}
+    public Player(final double x, final double y, final BufferedImage playerImg) {
+        this.x = x;
+        this.y = y;
+        this.playerImg = playerImg;
+    }
 
-	public int getY() {
-		return y;
-	}
+    public void tick() {
+        x += velX;
+        y += velY;
+    }
 
-	public void setY(int y) {
-		this.y = y;
-	}
+    public void render(final Graphics g) {
+        final int playerSize = playerImg.getWidth();
+        if (isLookingLeft) {
+            g.drawImage(playerImg, (int) Math.floor(x), (int) Math.floor(y), -playerSize, playerSize, null); // draws the player
+            //                                                               A
+            //                                                               | this minus flips the image horizontally
+        } else {
+            g.drawImage(playerImg, (int) Math.floor(x), (int) Math.floor(y), playerSize, playerSize, null); // draws the player
+        }
+    }
 
-	public void setVelX(int velX) {
-		this.velX = velX;
-	}
+    public double getX() {
+        return x;
+    }
 
-	public void setVelY(int velY) {
-		this.velY = velY;
-	}
+    public double getY() {
+        return y;
+    }
 
-	public void setLocation(int i, int y2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setX(final double x) {
+        this.x = x;
+    }
 
-	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setY(final double y) {
+        this.y = y;
+    }
+
+    public void setVelX(final double velX) {
+        this.velX = velX;
+    }
+
+    public void setVelY(final double velY) {
+        this.velY = velY;
+    }
+
+    public void setIsLookingLeft(final boolean isLookingLeft) {
+        this.isLookingLeft = isLookingLeft;
+    }
 }

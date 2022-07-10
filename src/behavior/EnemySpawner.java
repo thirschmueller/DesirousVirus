@@ -1,10 +1,10 @@
-package src.behavior;
-
-import src.entities.Enemy;
+package behavior;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+
+import entities.Enemy;
 
 public class EnemySpawner {
     private Enemy[] enemies;

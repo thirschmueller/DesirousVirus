@@ -1,11 +1,12 @@
 package src;
 
-import src.behavior.EnemySpawner;
-import src.behavior.MovementController;
-import src.entities.Player;
-import src.utils.BufferedImageUtils;
-
 import javax.swing.*;
+
+import behavior.EnemySpawner;
+import behavior.MovementController;
+import entities.Player;
+import utils.BufferedImageUtils;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
