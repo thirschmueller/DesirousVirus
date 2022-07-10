@@ -1,6 +1,8 @@
 package frames;
 
 import controllers.MovementController;
+import entities.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +17,7 @@ public class GameFrame extends java.awt.Frame implements Frame {
 
 	private final static JFrame frame = new JFrame();
     
+	
     
     
     

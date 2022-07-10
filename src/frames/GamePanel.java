@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements ActionListener{			// extends nu
 	int x = 0;
 	int y = 0;
 	
-	GamePanel(){
+	public GamePanel(){
 		this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		this.setBackground(Color.BLACK);
 		virus = new ImageIcon("virus.png").getImage();

@@ -54,9 +54,8 @@ public class GUI extends JFrame { // implements ActionListener {
 		window.getContentPane().setBackground(Color.black);
 		window.setLocation(125, 75);
 		window.pack();
-		window.setSize(Width, Height);
-		window.setVisible(true);
-
+		window.setSize(Width, Height);				// setSize() benutzen, wenn die parents keinen layout manager(z.B. set Layout Boxlayout) haben
+		window.setVisible(true);				    // setPreferredSize() hängt mit setMinimumSize und setMaximumSize zusammen --> benutzen, wenn ein parent layout manager vorhanden ist
 	}
 
 	public void run() {

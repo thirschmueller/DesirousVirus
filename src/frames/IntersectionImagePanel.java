@@ -16,6 +16,7 @@ import controllers.ResizeListener;
 public class IntersectionImagePanel extends JPanel {
 	private static BufferedImage bgImg;
 
+
 	public IntersectionImagePanel() {
 		try {
 			File img1 = new File("resources/pictures/veins.jpg");
@@ -92,7 +93,7 @@ public class IntersectionImagePanel extends JPanel {
       
         
     }
-	
+		
 		
 	 private static void initTimer(final Component component) {
          Timer t = new Timer(17, e -> {												// gibt milisekunden an bis zum nächsten update --> 17 = 60fps
@@ -104,7 +105,9 @@ public class IntersectionImagePanel extends JPanel {
      }  
 	 
 	 	 
-	 																					//Mehtoden ueberladen(Verschiedene sachen in der Klammer, sodass man nicht nur für 1 fall Konstruktoren hat sondern auch Variablen ,die man dann wo anders verwenden kann
+	
+
+	//Mehtoden ueberladen(Verschiedene sachen in der Klammer, sodass man nicht nur für 1 fall Konstruktoren hat sondern auch Variablen ,die man dann wo anders verwenden kann
 	 																					//Wenn man einen x/y wert angibt wird der 2. Konstruktor verwendet 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(IntersectionImagePanel::createAndShowGui);
