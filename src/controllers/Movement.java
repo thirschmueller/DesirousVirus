@@ -1,4 +1,4 @@
-package minigames;
+package controllers;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -25,8 +25,13 @@ public class Movement extends JFrame implements KeyListener{
 		label = new JLabel();
 		label.setBounds(0, 400, 50, 50);
 		label.setIcon(icon);
+
 		//label.setBackground(Color.red);
 		//label.setOpaque(true);
+
+		label.setBackground(Color.red);
+		label.setOpaque(true);
+
 		
 		this.getContentPane().setBackground(Color.black);
 		this.add(label);
@@ -45,12 +50,13 @@ public class Movement extends JFrame implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch(e.getKeyCode()) {
-		case '37': label.setLocation(label.getX()-50, label.getY());
+		case 37 : label.setLocation(label.getX()-50, label.getY());
 			break;
-		case '39': label.setLocation(label.getX()+50, label.getY());
-			break;
+		case 39 : label.setLocation(label.getX()+50, label.getY());
 		}
-		
+
+
+
 		
 	}
 	@Override
