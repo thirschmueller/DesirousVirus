@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import entities.Enemy;
+import utils.RandomGen;
 
 public class EnemySpawner {
     private Enemy[] enemies;
@@ -41,9 +42,9 @@ public class EnemySpawner {
         while(true) {
             for (int i = 0; i < enemies.length; i++) {
                 if (enemies[i] == null || enemies[i].getIsDead()) {
-                    enemies[i] = new Enemy(enemyImg, randomBetween(minY, maxY), maxX, randomBetween(1, 4), isLeft);
+                    enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), isLeft);
                     try {
-                        Thread.sleep((long) randomBetween(2000, 4000));
+                        Thread.sleep((long) RandomGen.randomBetween(2000, 4000));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -52,8 +53,5 @@ public class EnemySpawner {
         }
     }
 
-    private double randomBetween(final double min, final double max) {
-        final Random  r = new Random();
-        return r.nextDouble() * (max - min + 1.0) + min;
-    }
+
 }

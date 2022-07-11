@@ -3,56 +3,49 @@ package entities;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Enemy {
-    private double x;
-    private double maxX;
-    private double y;
-
+public class Enemy extends IGameObject {
     private BufferedImage enemyImg;
-
-    private double velX;
 
     private boolean isLookingLeft;
     private boolean isDead;
 
     public Enemy(final BufferedImage enemyImg, final double y, final double maxX, final double velX, final boolean isLookingLeft) {
-        this.x = isLookingLeft ? maxX + enemyImg.getWidth() : -enemyImg.getWidth();
-        this.y = y;
+        super(new Rectangle((int) (isLookingLeft ? maxX + enemyImg.getWidth() : -enemyImg.getWidth()), (int) y, (int) maxX, enemyImg.getHeight()), velX, 0);
         this.isDead = false;
-        this.velX = isLookingLeft ? -velX : velX;
         this.isLookingLeft = isLookingLeft;
         this.enemyImg = enemyImg;
-        this.maxX = maxX;
     }
 
+    @Override
     public void tick() {
         if (isOutOfBounds()) {
             isDead = true;
         } else {
-            x += velX;
+            setX(getX() + getVelX());
         }
     }
 
-    private boolean isOutOfBounds() {
-        if (isLookingLeft) {
-            return x < 0;
-        } else {
-            return x > maxX + enemyImg.getWidth();
-        }
-    }
-
+    @Override
     public void render(final Graphics g) {
         final int playerSize = enemyImg.getWidth();
         if (isLookingLeft) {
-            g.drawImage(enemyImg, (int) Math.floor(x), (int) Math.floor(y), -playerSize, playerSize, null); // draws the player
-            //                                                               A
-            //                                                               | this minus flips the image horizontally
+            g.drawImage(enemyImg, (int) Math.floor(getX()), (int) Math.floor(getY()), -playerSize, playerSize, null); // draws the player
+            //                                                                        A
+            //                                                                        | this minus flips the image horizontally
         } else {
-            g.drawImage(enemyImg, (int) Math.floor(x), (int) Math.floor(y), playerSize, playerSize, null); // draws the player
+            g.drawImage(enemyImg, (int) Math.floor(getX()), (int) Math.floor(getY()), playerSize, playerSize, null); // draws the player
         }
     }
 
     public boolean getIsDead() {
         return isDead;
+    }
+
+    private boolean isOutOfBounds() {
+        if (isLookingLeft) {
+            return getX() < 0;
+        } else {
+            return getX() > getX() + getBorder().getWidth() + enemyImg.getWidth();
+        }
     }
 }

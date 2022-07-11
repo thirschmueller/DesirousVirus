@@ -1,108 +1,90 @@
 package behavior;
 
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import entities.Player;
+import utils.BorderControl;
 
 public class MovementController extends KeyAdapter {
-	/*
-	 * Keyadapter statt listener (hat schon alles vom Listener drin) Extend this
-	 * class to create a {@code KeyEvent} listener and override the methods for the
-	 * events of interest. (If you implement the {@code KeyListener} interface, you
-	 * have to define all of the methods in it. This abstract class defines null
-	 * methods for them all, so you can only have to define methods for events you
-	 * care about.) Default von Listener (keine Funktion bisher) --> Man definiert
-	 * selbst die die man braucht
-	 */
+    /*
+     * Keyadapter statt listener (hat schon alles vom Listener drin) Extend this
+     * class to create a {@code KeyEvent} listener and override the methods for the
+     * events of interest. (If you implement the {@code KeyListener} interface, you
+     * have to define all of the methods in it. This abstract class defines null
+     * methods for them all, so you can only have to define methods for events you
+     * care about.) Default von Listener (keine Funktion bisher) --> Man definiert
+     * selbst die die man braucht
+     */
 
-	private final Player p;
+    private final Player p;
 
-	private final int maxX, maxY;
+    private final int maxX, maxY;
 
-	public MovementController(final Player p, final int maxX, final int maxY) { // Konstruktor
-		this.p = p; // wird genutzt, da man das coordinatensystem aus der Klasse Player verwenden
-					// will
-		this.maxX = maxX; // maximale größe definieren
-		this.maxY = maxY; // this. --> Dass es weiss dass man auf das oben definierte Objekt verweist
-	}
+    public MovementController(final Player p, final int maxX, final int maxY) { // Konstruktor
+        this.p = p; // wird genutzt, da man das coordinatensystem aus der Klasse Player verwenden
+        // will
+        this.maxX = maxX; // maximale größe definieren
+        this.maxY = maxY; // this. --> Dass es weiss dass man auf das oben definierte Objekt verweist
+    }
 
-	public void keyPressed(KeyEvent e) {
-		final int speed = 5;
+    public void keyPressed(KeyEvent e) {
+        final int speed = 5;
 
-		if (p.getX() > maxX) { // border right
-			p.setVelX(0); // wenn er am rechten Bildschrimrand ankommt wird die geschwindigkeit auf 0
-							// gesetzt
-			p.setX(maxX); // wenn er dort ist wird die Position immer wieder auf den maximalen x-Wert
-							// gesetzt
-			return;
-		}
-		if (p.getX() < 0) { // border left
-			p.setVelX(0);
-			p.setX(0);
-			return;
-		}
-		if (p.getY() > maxY) { // border bottom
-			p.setVelY(0);
-			p.setY(maxY);
-			return;
-		}
-		if (p.getY() < 0) { // border top
-			p.setVelY(0);
-			p.setY(0);
-			return;
-		}
+        final BorderControl control = new BorderControl(new Rectangle(0, 0, (int) (maxX + p.getBorder().getWidth()), (int) (maxY + p.getBorder().getHeight())));
+        control.forceInBorders(p);
 
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_W: // Vk ist das Virtual keyboard, welches vordefiniert ist aber die Tasten lesbar
-							// macht (keine keycodes)
-			p.setVelY(-speed); // negativer speed in y richtung, wenn w gedrückt wird
-			break;
-		case KeyEvent.VK_A:
-			p.setIsLookingLeft(true);
-			p.setVelX(-speed);
-			break;
-		case KeyEvent.VK_S:
-			p.setVelY(speed);
-			break;
-		case KeyEvent.VK_D:
-			p.setIsLookingLeft(false);
-			p.setVelX(speed);
-			break;
-		case KeyEvent.VK_LEFT:
-			p.setIsLookingLeft(true);
-			p.setVelX(-speed * 2);
-			break;
-		case KeyEvent.VK_UP:
-			p.setVelY(-speed * 2);
-			break;
-		case KeyEvent.VK_RIGHT:
-			p.setIsLookingLeft(false);
-			p.setVelX(speed * 2);
-			break;
-		case KeyEvent.VK_DOWN:
-			p.setVelY(speed * 2);
-			break;
-		}
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_W: // Vk ist das Virtual keyboard, welches vordefiniert ist aber die Tasten lesbar
+                // macht (keine keycodes)
+                p.setVelY(-speed); // negativer speed in y richtung, wenn w gedrückt wird
+                break;
+            case KeyEvent.VK_A:
+                p.setIsLookingLeft(true);
+                p.setVelX(-speed);
+                break;
+            case KeyEvent.VK_S:
+                p.setVelY(speed);
+                break;
+            case KeyEvent.VK_D:
+                p.setIsLookingLeft(false);
+                p.setVelX(speed);
+                break;
+            case KeyEvent.VK_LEFT:
+                p.setIsLookingLeft(true);
+                p.setVelX(-speed * 2);
+                break;
+            case KeyEvent.VK_UP:
+                p.setVelY(-speed * 2);
+                break;
+            case KeyEvent.VK_RIGHT:
+                p.setIsLookingLeft(false);
+                p.setVelX(speed * 2);
+                break;
+            case KeyEvent.VK_DOWN:
+                p.setVelY(speed * 2);
+                break;
+        }
 
-	}
+    }
 
-	public void keyReleased(KeyEvent e) {
-		int keyCode = e.getKeyCode();
-		if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_S
-				|| keyCode == KeyEvent.VK_DOWN) { // wenn eine dieser tasten losgelassen wird, wird die Geschwindigkeit
-													// in y-Richtung auf 0 gesetzt (dies erzeugt smoothes movement)
-			p.setVelY(0);
-		} else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_D
-				|| keyCode == KeyEvent.VK_RIGHT) {
-			p.setVelX(0);
-		}
-	}
+    public void keyReleased(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_S
+                || keyCode == KeyEvent.VK_DOWN) { // wenn eine dieser tasten losgelassen wird, wird die Geschwindigkeit
+            // in y-Richtung auf 0 gesetzt (dies erzeugt smoothes movement)
+            p.setVelY(0);
+        } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_D
+                || keyCode == KeyEvent.VK_RIGHT) {
+            p.setVelX(0);
+        }
+    }
 
-	@Override // Overide überschreibt übergeordnete Klassen (wenn Action performt darüber
-	// steht du aber etwas anderes als action haben willst)
-	public void keyTyped(KeyEvent e) {
-		System.out.println("Pressed: " + e.getKeyChar() + ", (code: " + e.getKeyCode() + ")"); // erkennen welche taste
-																								// gedrückt wird
-	}
+    @Override // Overide überschreibt übergeordnete Klassen (wenn Action performt darüber
+    // steht du aber etwas anderes als action haben willst)
+    public void keyTyped(KeyEvent e) {
+        //System.out.println("Pressed: " + e.getKeyChar() + ", (code: " + e.getKeyCode() + ")"); // erkennen welche taste
+        // gedrückt wird
+    }
 }

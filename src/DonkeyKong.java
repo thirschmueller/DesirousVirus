@@ -1,5 +1,3 @@
-package main;
-
 import frames.MenuFrame;
 
 public class DonkeyKong {

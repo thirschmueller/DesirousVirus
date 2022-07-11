@@ -30,4 +30,8 @@ public class BufferedImageUtils {
         AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
         return scaleOp.filter(image, after);
     }
+
+    public static int getScaled(final double toScale, final double scale) {
+        return (int) Math.floor(toScale * scale);
+    }
 }

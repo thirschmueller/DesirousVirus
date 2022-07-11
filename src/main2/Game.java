@@ -29,7 +29,7 @@ public class Game extends Canvas implements Runnable {
         final BufferedImage playerImg = BufferedImageUtils.scaleImage(Objects.requireNonNull(BufferedImageUtils.loadImage("resources/pictures/virus.png")), 0.5);
         final BufferedImage enemyImg = BufferedImageUtils.scaleImage(Objects.requireNonNull(BufferedImageUtils.loadImage("resources/pictures/leukocyt.png")), 0.05);
 
-        p = new Player(getScaledWidth(0.9), getScaledHeight(0.91), playerImg);
+        p = new Player(10, 10, playerImg);
         e1 = new EnemySpawner(enemyImg, getScaledHeight(0.86), getScaledHeight(0.94), getWidth() + enemyImg.getWidth(), false, 10);
         e2 = new EnemySpawner(enemyImg, getScaledHeight(0.64), getScaledHeight(0.72), getWidth() + enemyImg.getWidth(), true, 10);
         e3 = new EnemySpawner(enemyImg, getScaledHeight(0.44), getScaledHeight(0.52), getWidth() + enemyImg.getWidth(), false, 10);
@@ -133,10 +133,10 @@ public class Game extends Canvas implements Runnable {
     }
 
     private int getScaledWidth(final double scale) {
-        return (int) Math.floor(getWidth() * scale);
+        return BufferedImageUtils.getScaled(getWidth(), scale);
     }
 
     private int getScaledHeight(final double scale) {
-        return (int) Math.floor(getHeight() * scale);
+        return BufferedImageUtils.getScaled(getHeight(), scale);
     }
 }
