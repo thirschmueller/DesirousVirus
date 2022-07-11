@@ -2,9 +2,8 @@ package frames;
 
 import javax.swing.*;
 
+import Main2.Game;
 import controllers.MovementController;
-import src.Game;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
