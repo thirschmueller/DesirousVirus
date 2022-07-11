@@ -7,32 +7,22 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
 public class MovementController extends KeyAdapter {
-	/*
-	 * Keyadapter statt listener (hat schon alles vom Listener drin) Extend this
-	 * class to create a {@code KeyEvent} listener and override the methods for the
-	 * events of interest. (If you implement the {@code KeyListener} interface, you
-	 * have to define all of the methods in it. This abstract class defines null
-	 * methods for them all, so you can only have to define methods for events you
-	 * care about.) Default von Listener (keine Funktion bisher) --> Man definiert
-	 * selbst die die man braucht
-	 */
+	
 
 	private final Component component;
-	private JFrame frame; // alles was sich von einem Objekt verändert darf nicht static sein aber bei
-							// Statischen variablen kann man sie mit Klasse.Variable in allen Klassen
-							// aufrufen
+	private JFrame frame; 
 
-	public MovementController(final Component component, final JFrame frame) { // Konstruktor
+	public MovementController(final Component component, final JFrame frame) { 
 		this.component = component;
-		this.frame = frame; // this. --> Dass es weiss dass man auf das oben definierte Objekt verweist
+		this.frame = frame;
 
 	}
 
 	public void keyPressed(KeyEvent e) {
 
-		int x = component.getX(); // getter sind für x/y predefined
+		int x = component.getX(); 
 		int y = component.getY();
-		final Rectangle r = frame.getBounds(); // auch predefined für bounds
+		final Rectangle r = frame.getBounds(); 
 		final int winWidth = r.width;
 		final int winHeight = r.height;
 		final Rectangle recComponent = component.getBounds();
@@ -126,8 +116,7 @@ public class MovementController extends KeyAdapter {
 	// Errechnen des mittelpunks, da die Hitbox verschoben und nicht zentralisiert
 	// ist
 
-	@Override // Overide überschreibt übergeordnete Klassen (wenn Action performt darüber
-				// steht du aber etwas anderes als action haben willst)
+	@Override 
 	public void keyTyped(KeyEvent e) {
 		System.out.println("Pressed: " + e.getKeyChar() + ", (code: " + e.getKeyCode() + ")");
 	}

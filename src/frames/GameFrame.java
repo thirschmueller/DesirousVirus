@@ -14,9 +14,10 @@ import java.io.File;
 public class GameFrame extends java.awt.Frame implements Frame { // dadurch muss man das frame. nicht mehr schreiben -->
 																	// sonst hatte man immer ein JFrame erstellt
 
+	private static ImageIcon a; // alles was sich von einem Objekt verändert darf nicht static sein aber bei
+	// Statischen variablen kann man sie mit Klasse.Variable in allen Klassen
+	// aufrufen
 
-	private static ImageIcon a; // je nach dem welche compiler man implementiert kann es zu
-	// problemen kommen) mit der Zeile kann das nicht mehr passieren
 	private static final WindowListener wl = new WindowAdapter() { // falls man größe von Fenster verändern
 		public void windowClosing(WindowEvent e) {
 			System.exit(0);
