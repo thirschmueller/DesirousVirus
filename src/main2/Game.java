@@ -1,7 +1,5 @@
 package main2;
 
-import javax.swing.*;
-
 import behavior.EnemySpawner;
 import behavior.MovementController;
 import entities.Player;
@@ -71,10 +69,6 @@ public class Game extends Canvas implements Runnable {
             e.printStackTrace();
         }
         System.exit(1);
-    }
-
-    public static void main(String[] args) {
-    
     }
 
     @Override
