@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable {
         addKeyListener(new MovementController(p, getWidth() - playerImg.getWidth(), getHeight() - playerImg.getHeight()));
     }
 
-    private synchronized void start() {
+    public synchronized void start() {
         if (running) {
             return;
         }
@@ -74,17 +74,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public static void main(String[] args) {
-        final Game game = new Game();
-
-        final JFrame frame = new JFrame(game.title);
-        frame.add(game);
-        frame.pack();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null); // centers window on screen
-        frame.setVisible(true); // shows the frame
-
-        game.start(); // starts a thread
+    
     }
 
     @Override

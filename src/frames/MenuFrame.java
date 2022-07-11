@@ -1,7 +1,6 @@
 package frames;
 
 import javax.swing.*;
-
 import controllers.MovementController;
 import main2.Game;
 
@@ -97,7 +96,17 @@ public class MenuFrame implements ActionListener, Frame {
 		public void actionPerformed1(ActionEvent e) {
 			
 			if(e.getSource() == button1) {
-				Game gamePanel = new Game();
+			    final Game game = new Game();
+
+		        final JFrame frame = new JFrame(game.title);
+		        frame.add(game);
+		        frame.pack();
+		        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
+		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		        frame.setLocationRelativeTo(null); // centers window on screen
+		        frame.setVisible(true); // shows the frame
+
+		        game.start(); // starts a thread
 				
 				frame.dispose();
 			}
