@@ -1,13 +1,19 @@
 package main2;
 
-import behavior.EnemySpawner;
-import behavior.MovementController;
+import behavior.EnemySpawner;import behavior.MovementController;
 import entities.Player;
+import frames.Highscore;
 import utils.BufferedImageUtils;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class Game extends Canvas implements Runnable {
@@ -23,7 +29,102 @@ public class Game extends Canvas implements Runnable {
     private EnemySpawner e2;
     private EnemySpawner e3;
     private EnemySpawner e4;
+    
+    private Highscore h;     
+    
+    private int score = 1000; // momentiger score
+	private int highScore = 1000;
+	private String saveDataPath;
+	private String fileName = "SaveData";
+	private Font scoreFont;
+	
 
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getHighScore() {
+		return highScore;
+	}
+
+	public void setHighScore(int highScore) {
+		this.highScore = highScore;
+	}
+
+	public Font getScoreFont() {
+		return scoreFont;
+	}
+
+	public void setScoreFont(Font scoreFont) {
+		this.scoreFont = scoreFont;
+	}
+
+	public Game() {
+		try {
+			saveDataPath = Highscore.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(); // speichert die daten von Highscore bei der Jar von dem Spiel
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		loadHighscore();
+	}
+
+	private void createSaveData() {
+		try {
+			File file = new File(saveDataPath, fileName);
+
+			FileWriter output = new FileWriter(file); // neues File erstellen
+			BufferedWriter writer = new BufferedWriter(output);
+			writer.write("" + 1000); // Highscore auf 0 setzen
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+	}
+
+	private void loadHighscore() {
+		try {
+			File f = new File(saveDataPath, fileName);
+			if (!f.isFile()) { // wenn kein File vorhanden ist, wird ein neues erstellt
+				createSaveData();
+			}
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+			highScore = Integer.parseInt(reader.readLine());
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private void setHighscore() {
+		FileWriter output = null;
+
+		try {
+			File f = new File(saveDataPath, fileName);
+			output = new FileWriter(f);
+			BufferedWriter writer = new BufferedWriter(output);
+
+			
+			writer.write("" + highScore);
+
+			
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
     public void init() {
         backgroundImg = BufferedImageUtils.loadImage("resources/pictures/veins.jpg");
         final BufferedImage playerImg = BufferedImageUtils.scaleImage(Objects.requireNonNull(BufferedImageUtils.loadImage("resources/pictures/virus.png")), 0.5);
@@ -45,6 +146,8 @@ public class Game extends Canvas implements Runnable {
         t4.start();
 
         addKeyListener(new MovementController(p, getWidth() - playerImg.getWidth(), getHeight() - playerImg.getHeight()));
+        
+        h = new Highscore(highScore);
     }
 
     public synchronized void start() {
@@ -81,7 +184,8 @@ public class Game extends Canvas implements Runnable {
         int updates = 0;
         int frames = 0;
         long timer = System.currentTimeMillis();
-
+        score =  (int) ns;	//timer hängt mit score zusammen
+        
         while (running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
@@ -110,6 +214,7 @@ public class Game extends Canvas implements Runnable {
         e2.tick();
         e3.tick();
         e4.tick();
+        h.tick();	//tick für Highscore
     }
 
     private void render() {
@@ -127,9 +232,19 @@ public class Game extends Canvas implements Runnable {
         e2.render(g);
         e3.render(g);
         e4.render(g);
-
+        h.render(g);	//render für Highscore
+        
         g.dispose();
         bs.show();
+    }
+
+    
+    
+    private void update() {
+    	if(score > highScore) {	 //wenn der score größer als der Highscore ist, dann ist der score der neue Highscore und wird so auch immer geupdated
+    		highScore = score; 
+    		setHighscore();
+    	}
     }
 
     private int getScaledWidth(final double scale) {

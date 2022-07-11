@@ -69,23 +69,43 @@ public class MenuFrame {
 
         button1.addActionListener(bAction);
         button2.addActionListener(bAction);
-
+        
     }
 
     private static class ButtonAction implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
             final Game game = new Game();
-
+          
+            
             final JFrame frame = new JFrame(game.title);
+            final JLabel label = new JLabel();	//konvertiert zahl zu einem String 
+//          label.color(Color.black);
+            label.setText(String.valueOf(game.getScore()));
+//          label.setFont(game.getFont());
+            label.setLocation(200, 200);
+//          label.drawString("" + game.getScore(), 200, 200);	//position von schrift 
+            
+            
+//          label.setForeground(Color.RED);	//weil setColor nicht funktioniert
+//          label.setLocation(200, 200);
+//          label.drawString("Best" + game.getHighScore(), Game.WIDTH - 200, 200);		//position von schrift 
+            label.setVisible(true);
+            
+            frame.add(new JLabel("Hello World"), BorderLayout.CENTER);
+            frame.add(label);
             frame.add(game);
             frame.pack();
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null); // centers window on screen
             frame.setVisible(true); // shows the frame
+            
+            
 
             game.start(); // starts a thread
+            
+            
         }
     }
 }
