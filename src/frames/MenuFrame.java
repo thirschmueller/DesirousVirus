@@ -75,12 +75,14 @@ public class MenuFrame {
     private static class ButtonAction implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
+            frame.dispose();
             final Game game = new Game();
 
             final JFrame frame = new JFrame(game.title);
             frame.add(game);
             frame.pack();
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
+            frame.requestFocus(); // key input are recognised by the frame without clicking once on it
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null); // centers window on screen
             frame.setVisible(true); // shows the frame

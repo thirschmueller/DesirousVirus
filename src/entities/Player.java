@@ -17,9 +17,9 @@ public class Player extends IGameObject {
     public void render(final Graphics g) {
         final int playerSize = playerImg.getWidth();
         if (isLookingLeft) {
-            g.drawImage(playerImg, (int) (Math.floor(getX()) + playerSize * 1.35), (int) Math.floor(getY()), -playerSize, playerSize, null); // draws the player
-            //                                                                                             A
-            //                                                                                             | this minus flips the image horizontally
+            g.drawImage(playerImg, (int) (Math.floor(getX()) + playerSize), (int) Math.floor(getY()), -playerSize, playerSize, null); // draws the player
+            //                                                                                        A
+            //                                                                                        | this minus flips the image horizontally
         } else {
             g.drawImage(playerImg, (int) Math.floor(getX()), (int) Math.floor(getY()), playerSize, playerSize, null); // draws the player
         }

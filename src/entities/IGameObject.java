@@ -54,6 +54,6 @@ public abstract class IGameObject {
     }
 
     public Rectangle getBorder() {
-        return r;
+        return new Rectangle((int) x, (int) y, (int) r.getWidth(), (int) r.getHeight());
     }
 }

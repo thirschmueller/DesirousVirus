@@ -8,10 +8,12 @@ public class Enemy extends IGameObject {
 
     private boolean isLookingLeft;
     private boolean isDead;
+    private double maxX;
 
     public Enemy(final BufferedImage enemyImg, final double y, final double maxX, final double velX, final boolean isLookingLeft) {
-        super(new Rectangle((int) (isLookingLeft ? maxX + enemyImg.getWidth() : -enemyImg.getWidth()), (int) y, (int) maxX, enemyImg.getHeight()), velX, 0);
+        super(new Rectangle((int) (isLookingLeft ? maxX + enemyImg.getWidth() : -enemyImg.getWidth()), (int) y, enemyImg.getWidth(), enemyImg.getHeight()), isLookingLeft ? -velX : velX, 0);
         this.isDead = false;
+        this.maxX = maxX;
         this.isLookingLeft = isLookingLeft;
         this.enemyImg = enemyImg;
     }
@@ -43,9 +45,9 @@ public class Enemy extends IGameObject {
 
     private boolean isOutOfBounds() {
         if (isLookingLeft) {
-            return getX() < 0;
+            return getX() < -enemyImg.getWidth();
         } else {
-            return getX() > getX() + getBorder().getWidth() + enemyImg.getWidth();
+            return getX() > maxX + enemyImg.getWidth();
         }
     }
 }

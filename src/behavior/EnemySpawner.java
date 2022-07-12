@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import entities.Enemy;
+import entities.IGameObject;
 import utils.RandomGen;
 
 public class EnemySpawner {
@@ -22,12 +23,17 @@ public class EnemySpawner {
         this.enemyImg = enemyImg;
     }
 
-    public void tick() {
+    public boolean tick(final IGameObject obj) {
+        if (collisionCheckAll(obj)) {
+            System.out.println("Collision detected");
+            return true;
+        }
         for (int i = 0; i < enemies.length; i++) {
             if (enemies[i] != null) {
                 enemies[i].tick();
             }
         }
+        return false;
     }
 
     public void render(Graphics g) {
@@ -44,7 +50,7 @@ public class EnemySpawner {
                 if (enemies[i] == null || enemies[i].getIsDead()) {
                     enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), isLeft);
                     try {
-                        Thread.sleep((long) RandomGen.randomBetween(2000, 4000));
+                        Thread.sleep((long) RandomGen.randomBetween(20000 / (double) enemies.length, 40000 / (double) enemies.length));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -53,5 +59,34 @@ public class EnemySpawner {
         }
     }
 
+    private boolean collisionCheckAll(final IGameObject obj) {
+        boolean hit = false;
+        for (final Enemy e : enemies) {
+            if (e != null && collisionCheckSingle(e, obj)) {
+                hit = true;
+                break;
+            }
+        }
+        return hit;
+    }
 
+    private boolean collisionCheckSingle(final IGameObject obj1, final IGameObject obj2) {
+        // Location obj 1
+        double centerX1 = obj1.getBorder().getCenterX();
+        double centerY1 = obj1.getBorder().getCenterY();
+
+        // Location obj 1
+        double centerX2 = obj2.getBorder().getCenterX();
+        double centerY2 = obj2.getBorder().getCenterY();
+
+        // Calculate the distance between the center of obj1 and obj2
+        double diffX = centerX1 - centerX2;
+        double diffY = centerY1 - centerY2;
+
+        double distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
+
+        // Compare with minimum distance
+        double minDistance = obj1.getBorder().getWidth() / 2 + obj2.getBorder().getWidth() / 2;
+        return distance <= minDistance;
+    }
 }

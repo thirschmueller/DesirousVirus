@@ -30,7 +30,7 @@ public class MovementController extends KeyAdapter {
     }
 
     public void keyPressed(KeyEvent e) {
-        final int speed = 5;
+        final double speed = 3;
 
         final BorderControl control = new BorderControl(new Rectangle(0, 0, (int) (maxX + p.getBorder().getWidth()), (int) (maxY + p.getBorder().getHeight())));
         control.forceInBorders(p);

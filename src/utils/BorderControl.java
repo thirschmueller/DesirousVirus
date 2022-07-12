@@ -34,11 +34,6 @@ public class BorderControl {
         return crossed;
     }
 
-    public boolean isColliding(final IGameObject object) {
-        final List<BorderCrossed> crossed = relativeLocation(object);
-        return crossed.size() != 0;
-    }
-
     public void forceInBorders(final IGameObject object) {
         final List<BorderCrossed> crossed = relativeLocation(object);
         if (crossed.contains(BorderCrossed.LEFT)) {
