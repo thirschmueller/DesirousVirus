@@ -184,7 +184,7 @@ public class Game extends Canvas implements Runnable {
         int updates = 0;
         int frames = 0;
         long timer = System.currentTimeMillis();
-        score =  (int) ns;	//timer hängt mit score zusammen
+
         
         while (running) {
             long now = System.nanoTime();
