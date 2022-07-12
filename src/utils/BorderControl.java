@@ -16,8 +16,6 @@ public class BorderControl {
 
     private List<BorderCrossed> relativeLocation(final IGameObject object) {
         final List<BorderCrossed> crossed = new ArrayList<>();
-        //System.out.println("OBJECT: x: " + object.getX() + ", y:" + object.getY() + ", width:" + object.getWidth() + ", height:" + object.getHeight());
-        //System.out.println("BORDER: x: " + border.getX() + ", y:" + border.getY() + ", width:" + border.getWidth() + ", height:" + border.getHeight());
 
         if (object.getX() < border.getX()) {
             crossed.add(BorderCrossed.LEFT);

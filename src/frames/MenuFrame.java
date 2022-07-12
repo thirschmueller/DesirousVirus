@@ -1,5 +1,6 @@
 package frames;
 
+import behavior.AsyncTask;
 import main2.Game;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class MenuFrame {
 
-    private static final JFrame frame = new JFrame();
+    private static final JFrame menuFrame = new JFrame();
     JPanel panel = new JPanel();
     JButton button1 = new JButton("Play");
     JButton button2 = new JButton("Highscores");
@@ -58,36 +59,41 @@ public class MenuFrame {
         button4.setBackground(Color.DARK_GRAY);
         button4.setFocusable(false);
 
-        frame.getContentPane().add(panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocation(600, 400);
-        frame.setTitle("Minigame");
-        frame.pack();
-        frame.setVisible(true);
+        menuFrame.getContentPane().add(panel);
+        menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menuFrame.setLocation(600, 400);
+        menuFrame.setTitle("Minigame");
+        menuFrame.pack();
+        menuFrame.setVisible(true);
 
         ButtonAction bAction = new ButtonAction();
 
         button1.addActionListener(bAction);
         button2.addActionListener(bAction);
-
     }
 
-    private static class ButtonAction implements ActionListener {
+    public static class ButtonAction implements ActionListener {
+
+        final static Game game = new Game();
+        final static JFrame gameFrame = new JFrame(game.title);
 
         public void actionPerformed(ActionEvent e) {
-            frame.dispose();
-            final Game game = new Game();
+            MenuFrame.menuFrame.dispose();
 
-            final JFrame frame = new JFrame(game.title);
-            frame.add(game);
-            frame.pack();
-            frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
-            frame.requestFocus(); // key input are recognised by the frame without clicking once on it
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLocationRelativeTo(null); // centers window on screen
-            frame.setVisible(true); // shows the frame
+            gameFrame.add(game);
+            gameFrame.pack();
+            gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
+            gameFrame.requestFocus(); // key input are recognised by the frame without clicking once on it
+            gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            gameFrame.setLocationRelativeTo(null); // centers window on screen
+            gameFrame.setVisible(true); // shows the frame
 
-            game.start(); // starts a thread
+            new AsyncTask(game); // starts game loop in new thread
+        }
+
+        public static void restart() {
+            gameFrame.dispose();
+            new MenuFrame();
         }
     }
 }

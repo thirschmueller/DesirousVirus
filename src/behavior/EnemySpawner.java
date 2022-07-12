@@ -1,14 +1,13 @@
 package behavior;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.Random;
-
 import entities.Enemy;
 import entities.IGameObject;
 import utils.RandomGen;
 
-public class EnemySpawner {
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+public class EnemySpawner implements Runnable {
     private Enemy[] enemies;
     private double minY, maxY, maxX;
     private boolean isLeft;
@@ -28,24 +27,25 @@ public class EnemySpawner {
             System.out.println("Collision detected");
             return true;
         }
-        for (int i = 0; i < enemies.length; i++) {
-            if (enemies[i] != null) {
-                enemies[i].tick();
+        for (Enemy enemy : enemies) {
+            if (enemy != null) {
+                enemy.tick();
             }
         }
         return false;
     }
 
     public void render(Graphics g) {
-        for (int i = 0; i < enemies.length; i++) {
-            if (enemies[i] != null) {
-                enemies[i].render(g);
+        for (Enemy enemy : enemies) {
+            if (enemy != null) {
+                enemy.render(g);
             }
         }
     }
 
-    public void spawn() {
-        while(true) {
+    @Override
+    public void run() {
+        while (!Thread.currentThread().isInterrupted()) {
             for (int i = 0; i < enemies.length; i++) {
                 if (enemies[i] == null || enemies[i].getIsDead()) {
                     enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), isLeft);
