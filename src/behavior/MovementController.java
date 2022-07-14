@@ -32,8 +32,11 @@ public class MovementController extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         final double speed = 3;
 
-        final BorderControl control = new BorderControl(new Rectangle(0, 0, (int) (maxX + p.getBorder().getWidth()), (int) (maxY + p.getBorder().getHeight())));
+        /*final BorderControl control = new BorderControl(new Rectangle(0, 0, (int) (maxX + p.getBorder().getWidth()), (int) (maxY + p.getBorder().getHeight())));
         control.forceInBorders(p);
+
+        final BorderControl noPassArea = new BorderControl(new Rectangle(0, (int) (maxY), maxX, 100));
+        noPassArea.forceOutOfBorders(p);*/
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W: // Vk ist das Virtual keyboard, welches vordefiniert ist aber die Tasten lesbar
@@ -66,7 +69,6 @@ public class MovementController extends KeyAdapter {
                 p.setVelY(speed * 2);
                 break;
         }
-
     }
 
     public void keyReleased(KeyEvent e) {

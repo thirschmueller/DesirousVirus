@@ -1,10 +1,12 @@
 package entities;
 
+import utils.BorderControl;
+
 import java.awt.*;
 
 public abstract class IGameObject {
     private Rectangle r;
-    private double x, y, velX, velY;
+    protected double x, y, velX, velY;
 
     public IGameObject(final Rectangle r, final double velX, final double velY) {
         this.r = r;

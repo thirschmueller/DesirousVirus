@@ -25,7 +25,7 @@ public class Game extends Canvas implements Runnable {
         final BufferedImage playerImg = BufferedImageUtils.scaleImage(Objects.requireNonNull(BufferedImageUtils.loadImage("resources/pictures/virus.png")), 0.35);
         final BufferedImage enemyImg = BufferedImageUtils.scaleImage(Objects.requireNonNull(BufferedImageUtils.loadImage("resources/pictures/leukocyt.png")), 0.05);
 
-        p = new Player(getScaledWidth(0.96), getScaledHeight(0.91), playerImg);
+        p = new Player(getScaledWidth(0.95), getScaledHeight(0.93), playerImg, getWidth(), getHeight());
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.86), getScaledHeight(0.94), getWidth() + enemyImg.getWidth(), false, 10));
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.64), getScaledHeight(0.72), getWidth() + enemyImg.getWidth(), true, 15));
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.44), getScaledHeight(0.52), getWidth() + enemyImg.getWidth(), false, 20));
@@ -62,8 +62,9 @@ public class Game extends Canvas implements Runnable {
         p.tick();
         boolean hit = e.tick(p);
         if (hit) {
-            AsyncTask.stop();
+            System.exit(-1);
             MenuFrame.ButtonAction.restart();
+            AsyncTask.stop();
         }
         return !hit;
     }
