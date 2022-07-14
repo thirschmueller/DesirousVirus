@@ -56,9 +56,6 @@ public class BorderControl {
 
     public void forceOutOfArea(final IGameObject object) {
         final List<BorderCrossed> crossed = bordersCrossed(object);
-        if (crossed.size() > 0) {
-            getText(crossed, border, object.getBorder());
-        }
         if (crossed.contains(BorderCrossed.LEFT)) {
             object.setVelX(0);
             object.setX(border.getX() - object.getBorder().getWidth() - 1);
