@@ -11,6 +11,12 @@ import utils.BufferedImageUtils;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class Game extends Canvas implements Runnable {
@@ -34,6 +40,8 @@ public class Game extends Canvas implements Runnable {
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31), getWidth() + enemyImg.getWidth(), false, 15));
 
         addKeyListener(new MovementController(p, getWidth() - playerImg.getWidth(), getHeight() - playerImg.getHeight()));
+        
+        h = new Highscore(highScore);
     }
 
     @Override
@@ -84,6 +92,15 @@ public class Game extends Canvas implements Runnable {
 
         g.dispose();
         bs.show();
+    }
+
+    
+    
+    private void update() {
+    	if(score > highScore) {	 //wenn der score größer als der Highscore ist, dann ist der score der neue Highscore und wird so auch immer geupdated
+    		highScore = score; 
+    		setHighscore();
+    	}
     }
 
     private int getScaledWidth(final double scale) {
