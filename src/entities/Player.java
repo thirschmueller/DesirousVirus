@@ -41,7 +41,7 @@ public class Player extends IGameObject {
     }
 
     public void tick() {
-        super.x += super.velX;
+        super.x += super.velX;	//super, weil es alles aus player und IGameObjects können soll 
         super.y += super.velY;
 
         for (int i = 0; i < borders.length; i++) {

@@ -10,8 +10,11 @@ public class Enemy extends IGameObject {
     private boolean isDead;
     private double maxX, scale;
 
-    public Enemy(final BufferedImage enemyImg, final double y, final double maxX, final double velX, final double enemyScale, final boolean isLookingLeft) {
+
+    public Enemy(final BufferedImage enemyImg, final double y, final double maxX, final double velX, final double enemyScale, final boolean isLookingLeft) {	
         super(new Rectangle((int) (isLookingLeft ? maxX + enemyImg.getWidth() : -enemyImg.getWidth()), (int) y, (int) (enemyImg.getWidth() * enemyScale), (int) (enemyImg.getHeight() * enemyScale)), isLookingLeft ? -velX : velX, 0);
+      //super, um auf den Konstruktor von IGameObject aufzurufen
+ 
         this.isDead = false;
         this.maxX = maxX;
         this.scale = enemyScale;
@@ -24,7 +27,7 @@ public class Enemy extends IGameObject {
         if (isOutOfBounds()) {
             isDead = true;
         } else {
-            setX(getX() + getVelX());
+            setX(getX() + getVelX());	//wenn er nicht tot ist soll die xPosition auf die XKoordinate setzen
         }
     }
 

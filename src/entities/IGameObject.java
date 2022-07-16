@@ -6,9 +6,9 @@ public abstract class IGameObject {
     private Rectangle r;
     protected double x, y, velX, velY;
 
-    public IGameObject(final Rectangle r, final double velX, final double velY) {
-        this.r = r;
-        this.x = r.getX();
+    public IGameObject(final Rectangle r, final double velX, final double velY) {	//Rechteck ist vordefiniert und wird dann für Player und enemies verwendet 
+        this.r = r;	
+        this.x = r.getX();	//größe vom Rechteck wird auf die größe des Spielers gesetzt
         this.y = r.getY();
         this.velX = velX;
         this.velY = velY;

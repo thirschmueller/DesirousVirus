@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class BufferedImageUtils {
+public class BufferedImageUtils {	//performance, da die Bilder im Hintergrund geladen werden und skaliert werden
 
     public static BufferedImage loadImage(final String path) {
         BufferedImage image;

@@ -48,17 +48,17 @@ public class MovementController extends KeyAdapter {
                 break;
             case KeyEvent.VK_LEFT:
                 p.setIsLookingLeft(true);
-                p.setVelX(-speed * 2);
+                p.setVelX(-speed);
                 break;
             case KeyEvent.VK_UP:
-                p.setVelY(-speed * 2);
+                p.setVelY(-speed);
                 break;
             case KeyEvent.VK_RIGHT:
                 p.setIsLookingLeft(false);
-                p.setVelX(speed * 2);
+                p.setVelX(speed);
                 break;
             case KeyEvent.VK_DOWN:
-                p.setVelY(speed * 2);
+                p.setVelY(speed);
                 break;
         }
     }
