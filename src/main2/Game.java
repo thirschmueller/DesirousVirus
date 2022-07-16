@@ -55,7 +55,7 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
 	
 			e1.printStackTrace();
 		}
-		System.out.println("" + h.loadHighScore());
+	//	System.out.println("" + h.loadHighScore());
 	}
 
 	@Override

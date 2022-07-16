@@ -37,17 +37,17 @@ public class Highscore {
 	}
 
 	public void storeHighScore() {
-		if (loadHighScore() < highScore) {
-			storage.set(String.valueOf((int) highScore));
+	//	if (loadHighScore() < highScore) {
+	//		storage.set(String.valueOf((int) highScore));
 		}
 
-	}
+//	}
 
-	public int loadHighScore() {
-		return Integer.parseInt((String) storage.load());
+//	public int loadHighScore() {
+	//	return Integer.parseInt((String) storage.load());
 	}
 	
 	//aufrufen mit loadHighscore
 	//am besten dahin verlinke (Highscore GUI)
 
-}
+//}
