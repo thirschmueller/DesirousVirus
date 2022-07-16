@@ -75,7 +75,7 @@ public class MenuFrame {
     public static class ButtonAction implements ActionListener {
 
         final static Game game = new Game();
-        final static JFrame gameFrame = new JFrame(game.title);
+        final static JFrame gameFrame = new JFrame(Game.title);
 
         public void actionPerformed(ActionEvent e) {
             MenuFrame.menuFrame.dispose();

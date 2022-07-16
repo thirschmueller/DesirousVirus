@@ -87,6 +87,6 @@ public class EnemySpawner implements Runnable {
 
         // Compare with minimum distance
         double minDistance = obj1.getBorder().getWidth() / 2 + obj2.getBorder().getWidth() / 2;
-        return distance <= minDistance;
+        return distance <= minDistance*0.8;
     }
 }

@@ -7,16 +7,21 @@ import java.awt.image.BufferedImage;
 
 public class Player extends IGameObject {
 
-    private BufferedImage playerImg;
+    private BufferedImage playerImg;	//Zeichnet im hintegrund ein Bild, welches dann sichtbar gemacht werden kann 
 
     private boolean isLookingLeft = true;
 
+<<<<<<< Updated upstream
     private int maxX, maxY;
 
     private BorderControl[] borders;
 
     public Player(final double x, final double y, final BufferedImage playerImg, final int maxX, final int maxY) {
         super(new Rectangle((int) x, (int) y, playerImg.getWidth(), playerImg.getHeight()), 0, 0);
+=======
+    public Player(final double x, final double y, final BufferedImage playerImg) {
+        super(new Rectangle((int)x,(int)y,playerImg.getWidth(),playerImg.getHeight()), 0, 0);	//(Rectangle(x, y, Breite, Höhe), geschwindigkeitX, GeschwindigkeitY)
+>>>>>>> Stashed changes
         this.playerImg = playerImg;
         this.maxX = maxX;
         this.maxY = maxY;

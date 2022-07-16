@@ -14,7 +14,8 @@ import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 public class Game extends Canvas implements Runnable {
-    public static final String title = "Donkey Kong";
+    private static final long serialVersionUID = 1L;
+	public static final String title = "Donkey Kong";
     private static BufferedImage backgroundImg;
 
     private static Player p;
