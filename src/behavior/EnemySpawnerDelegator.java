@@ -1,5 +1,6 @@
 package behavior;
 
+import entities.EnemySpawner;
 import entities.Player;
 
 import java.awt.*;

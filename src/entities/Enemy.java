@@ -8,12 +8,13 @@ public class Enemy extends IGameObject {
 
     private boolean isLookingLeft;
     private boolean isDead;
-    private double maxX;
+    private double maxX, scale;
 
-    public Enemy(final BufferedImage enemyImg, final double y, final double maxX, final double velX, final boolean isLookingLeft) {
-        super(new Rectangle((int) (isLookingLeft ? maxX + enemyImg.getWidth() : -enemyImg.getWidth()), (int) y, enemyImg.getWidth(), enemyImg.getHeight()), isLookingLeft ? -velX : velX, 0);
+    public Enemy(final BufferedImage enemyImg, final double y, final double maxX, final double velX, final double enemyScale, final boolean isLookingLeft) {
+        super(new Rectangle((int) (isLookingLeft ? maxX + enemyImg.getWidth() : -enemyImg.getWidth()), (int) y, (int) (enemyImg.getWidth() * enemyScale), (int) (enemyImg.getHeight() * enemyScale)), isLookingLeft ? -velX : velX, 0);
         this.isDead = false;
         this.maxX = maxX;
+        this.scale = enemyScale;
         this.isLookingLeft = isLookingLeft;
         this.enemyImg = enemyImg;
     }
@@ -29,13 +30,13 @@ public class Enemy extends IGameObject {
 
     @Override
     public void render(final Graphics g) {
-        final int playerSize = enemyImg.getWidth();
+        final int enemySize = (int) (enemyImg.getWidth() * scale);
         if (isLookingLeft) {
-            g.drawImage(enemyImg, (int) Math.floor(getX()), (int) Math.floor(getY()), -playerSize, playerSize, null); // draws the player
+            g.drawImage(enemyImg, (int) Math.floor(getX()), (int) Math.floor(getY()), -enemySize, enemySize, null); // draws the player
             //                                                                        A
             //                                                                        | this minus flips the image horizontally
         } else {
-            g.drawImage(enemyImg, (int) Math.floor(getX()), (int) Math.floor(getY()), playerSize, playerSize, null); // draws the player
+            g.drawImage(enemyImg, (int) Math.floor(getX()), (int) Math.floor(getY()), enemySize, enemySize, null); // draws the player
         }
     }
 

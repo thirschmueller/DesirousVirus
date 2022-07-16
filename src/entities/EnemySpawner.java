@@ -1,7 +1,5 @@
-package behavior;
+package entities;
 
-import entities.Enemy;
-import entities.IGameObject;
 import utils.RandomGen;
 
 import java.awt.*;
@@ -9,15 +7,16 @@ import java.awt.image.BufferedImage;
 
 public class EnemySpawner implements Runnable {
     private Enemy[] enemies;
-    private double minY, maxY, maxX;
+    private double minY, maxY, maxX, enemyScale;
     private boolean isLeft;
     private BufferedImage enemyImg;
 
-    public EnemySpawner(final BufferedImage enemyImg, final double minY, final double maxY, final double maxX, final boolean isLeft, final int maxEnemies) {
+    public EnemySpawner(final BufferedImage enemyImg, final double minY, final double maxY, final double maxX, final boolean isLeft, final double enemyScale, final int maxEnemies) {
         this.enemies = new Enemy[maxEnemies];
         this.minY = minY;
         this.maxY = maxY;
         this.maxX = maxX;
+        this.enemyScale = enemyScale;
         this.isLeft = isLeft;
         this.enemyImg = enemyImg;
     }
@@ -48,7 +47,7 @@ public class EnemySpawner implements Runnable {
         while (!Thread.currentThread().isInterrupted()) {
             for (int i = 0; i < enemies.length; i++) {
                 if (enemies[i] == null || enemies[i].getIsDead()) {
-                    enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), isLeft);
+                    enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), enemyScale, isLeft);
                     try {
                         Thread.sleep((long) RandomGen.randomBetween(20000 / (double) enemies.length, 40000 / (double) enemies.length));
                     } catch (InterruptedException e) {

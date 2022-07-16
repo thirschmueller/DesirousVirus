@@ -13,10 +13,13 @@ public class Player extends IGameObject {
 
     private BorderControl[] borders;
 
+    private double scale;
 
-    public Player(final double x, final double y, final BufferedImage playerImg, final int maxX, final int maxY) {
-        super(new Rectangle((int) x, (int) y, playerImg.getWidth(), playerImg.getHeight()), 0, 0);    //(Rectangle(x, y, Breite, H�he), geschwindigkeitX, GeschwindigkeitY)
 
+    public Player(final double x, final double y, final BufferedImage playerImg, final int maxX, final int maxY, final double scale) {
+        super(new Rectangle((int) x, (int) y, (int) (playerImg.getWidth() * scale), (int) (playerImg.getHeight() * scale)), 0, 0);    //(Rectangle(x, y, Breite, H�he), geschwindigkeitX, GeschwindigkeitY)
+
+        this.scale = scale;
         this.playerImg = playerImg;
         this.borders = new BorderControl[]{
                 new BorderControl(new Rectangle((int) (maxX * -0.039), 0, (int) (maxX * 0.039), maxY)), // left
@@ -49,7 +52,7 @@ public class Player extends IGameObject {
 
     public void render(final Graphics g) {
 
-        final int playerSize = playerImg.getWidth();
+        final int playerSize = (int) (playerImg.getWidth() * scale);
         if (isLookingLeft) {
             g.drawImage(playerImg, (int) (Math.floor(getX()) + playerSize), (int) Math.floor(getY()), -playerSize, playerSize, null); // draws the player
             //                                                                                        A
