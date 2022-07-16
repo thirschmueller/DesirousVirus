@@ -1,7 +1,5 @@
 package entities;
 
-import utils.BorderControl;
-
 import java.awt.*;
 
 public abstract class IGameObject {

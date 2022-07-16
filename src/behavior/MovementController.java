@@ -1,11 +1,9 @@
 package behavior;
 
-import java.awt.*;
+import entities.Player;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-import entities.Player;
-import utils.BorderControl;
 
 public class MovementController extends KeyAdapter {
     /*
@@ -31,12 +29,6 @@ public class MovementController extends KeyAdapter {
 
     public void keyPressed(KeyEvent e) {
         final double speed = 3;
-
-        /*final BorderControl control = new BorderControl(new Rectangle(0, 0, (int) (maxX + p.getBorder().getWidth()), (int) (maxY + p.getBorder().getHeight())));
-        control.forceInBorders(p);
-
-        final BorderControl noPassArea = new BorderControl(new Rectangle(0, (int) (maxY), maxX, 100));
-        noPassArea.forceOutOfBorders(p);*/
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W: // Vk ist das Virtual keyboard, welches vordefiniert ist aber die Tasten lesbar

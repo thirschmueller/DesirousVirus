@@ -42,8 +42,6 @@ public class Game extends Canvas implements Runnable {
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31), getWidth() + enemyImg.getWidth(), false, 15));
 
         addKeyListener(new MovementController(p, getWidth() - playerImg.getWidth(), getHeight() - playerImg.getHeight()));
-        
-      
     }
 	
 

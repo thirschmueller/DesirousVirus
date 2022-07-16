@@ -73,11 +73,11 @@ public class BorderControl {
             object.setY(border.getY() + border.getHeight() + 1);
         }
     }
-}
 
-enum BorderCrossed {
-    LEFT,
-    TOP,
-    RIGHT,
-    BOTTOM
+    private enum BorderCrossed {
+        LEFT,
+        TOP,
+        RIGHT,
+        BOTTOM
+    }
 }
