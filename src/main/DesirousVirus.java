@@ -1,7 +1,7 @@
 package main;
 import frames.MenuFrame;
 
-public class DonkeyKong {
+public class DesirousVirus {
     public static void main(String[] args) {
         new MenuFrame();
     }
