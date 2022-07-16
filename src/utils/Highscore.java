@@ -1,4 +1,4 @@
-package frames;
+package utils;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -10,13 +10,9 @@ import java.net.URISyntaxException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import utils.DataStorage;
-
 public class Highscore {
 
-	// render und tick einfügen und alles hier rein schreiben (gesamte Speicher und
-	// load sachen)
-
+	public static final String title = "Highscore";
 	private double highScore = 1000;
 	private DataStorage storage;
 	private int x, y;
@@ -24,8 +20,7 @@ public class Highscore {
 	public Highscore(final int x, final int y) throws URISyntaxException {
 		this.x = x;
 		this.y = y;
-		final String saveDataPath = Highscore.class.getProtectionDomain().getCodeSource().getLocation().toURI()
-				.getPath();
+		final String saveDataPath = Highscore.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 		storage = new DataStorage(saveDataPath, "highscore"); // speichert die daten von Highscore bei der Jar von dem
 																// Spiel);
 	}

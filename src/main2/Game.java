@@ -5,9 +5,9 @@ import entities.EnemySpawner;
 import behavior.EnemySpawnerDelegator;
 import behavior.MovementController;
 import entities.Player;
-import frames.Highscore;
 import frames.MenuFrame;
 import utils.BufferedImageUtils;
+import utils.Highscore;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
 	private static final long serialVersionUID = 1L;
-	public static final String title = "Donkey Kong";
+	public static final String title = "Desirous Virus";
 	private static BufferedImage backgroundImg;
 
 	private static Player p;
@@ -36,18 +36,13 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
 		final double enemyScale = getHeight() / (double) 1370 * 0.05;
 
 		p = new Player(getScaledWidth(0.95), getScaledHeight(0.93), playerImg, getWidth(), getHeight(), playerScale);
-		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.86), getScaledHeight(0.94),
-				getWidth() + enemyImg.getWidth(), false, enemyScale, 10)); // spawner für die gegner mit random
+		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.86), getScaledHeight(0.94), getWidth() + enemyImg.getWidth(), false, enemyScale, 10)); // spawner für die gegner mit random
 																			// höhe(von, bis), und anzahl
-		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.64), getScaledHeight(0.72),
-				getWidth() + enemyImg.getWidth(), true, enemyScale, 15)); // width wichtig für die erkennung wann sie
+		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.64), getScaledHeight(0.72), getWidth() + enemyImg.getWidth(), true, enemyScale, 15)); // width wichtig für die erkennung wann sie
 																			// aus der b
-		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.44), getScaledHeight(0.52),
-				getWidth() + enemyImg.getWidth(), false, enemyScale, 20)); // true und false für rechts oder links
-		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31),
-				getWidth() + enemyImg.getWidth(), true, enemyScale, 15));
-		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31),
-				getWidth() + enemyImg.getWidth(), false, enemyScale, 15));
+		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.44), getScaledHeight(0.52), getWidth() + enemyImg.getWidth(), false, enemyScale, 20)); // true und false für rechts oder links
+		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31), getWidth() + enemyImg.getWidth(), true, enemyScale, 15));
+		e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31), getWidth() + enemyImg.getWidth(), false, enemyScale, 15));
 
 		addKeyListener(
 				new MovementController(p, getWidth() - playerImg.getWidth(), getHeight() - playerImg.getHeight())); // adden
@@ -97,7 +92,7 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
 		boolean hit = e.tick(p); // tick in enemy aufrufen (wenn er nicht tot ist soll er sich bewegen)
 		if (hit) {
 			h.storeHighScore();
-			System.exit(-1);	//killt das spiel
+			System.exit(-1);	//schließt das spiel
 			MenuFrame.ButtonAction.restart();
 			AsyncTask.stop();		
 			//checke ob man den win gehittet hat (h.StoreHighscore)
