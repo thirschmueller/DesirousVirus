@@ -5,6 +5,7 @@ import behavior.EnemySpawner;
 import behavior.EnemySpawnerDelegator;
 import behavior.MovementController;
 import entities.Player;
+import frames.Highscore;
 import frames.MenuFrame;
 import utils.BufferedImageUtils;
 
@@ -26,7 +27,8 @@ public class Game extends Canvas implements Runnable {
 
     private static Player p;
     private static final EnemySpawnerDelegator e = new EnemySpawnerDelegator();
-
+    private Highscore h;
+   
     public void init() {
         backgroundImg = BufferedImageUtils.loadImage("resources/pictures/veins.jpg");
         final BufferedImage playerImg = BufferedImageUtils.scaleImage(Objects.requireNonNull(BufferedImageUtils.loadImage("resources/pictures/virus.png")), 0.35);
@@ -41,8 +43,9 @@ public class Game extends Canvas implements Runnable {
 
         addKeyListener(new MovementController(p, getWidth() - playerImg.getWidth(), getHeight() - playerImg.getHeight()));
         
-        h = new Highscore(highScore);
+      
     }
+	
 
     @Override
     public void run() {
@@ -52,7 +55,7 @@ public class Game extends Canvas implements Runnable {
         final double ns = 1000000000 / amountOfTicks;
         double delta = 0;
         boolean isRunning = false;
-
+        
         while (Thread.currentThread().isAlive()) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
@@ -65,6 +68,7 @@ public class Game extends Canvas implements Runnable {
                 render();
             }
         }
+ //       new Highscore(highscore);
     }
 
     private boolean tick() {
@@ -94,14 +98,6 @@ public class Game extends Canvas implements Runnable {
         bs.show();
     }
 
-    
-    
-    private void update() {
-    	if(score > highScore) {	 //wenn der score größer als der Highscore ist, dann ist der score der neue Highscore und wird so auch immer geupdated
-    		highScore = score; 
-    		setHighscore();
-    	}
-    }
 
     private int getScaledWidth(final double scale) {
         return BufferedImageUtils.getScaled(getWidth(), scale);

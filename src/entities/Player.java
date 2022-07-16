@@ -11,17 +11,16 @@ public class Player extends IGameObject {
 
     private boolean isLookingLeft = true;
 
-<<<<<<< Updated upstream
+
     private int maxX, maxY;
 
     private BorderControl[] borders;
 
+   
+    
     public Player(final double x, final double y, final BufferedImage playerImg, final int maxX, final int maxY) {
-        super(new Rectangle((int) x, (int) y, playerImg.getWidth(), playerImg.getHeight()), 0, 0);
-=======
-    public Player(final double x, final double y, final BufferedImage playerImg) {
-        super(new Rectangle((int)x,(int)y,playerImg.getWidth(),playerImg.getHeight()), 0, 0);	//(Rectangle(x, y, Breite, Höhe), geschwindigkeitX, GeschwindigkeitY)
->>>>>>> Stashed changes
+        super(new Rectangle((int)x,(int)y,playerImg.getWidth(),playerImg.getHeight()), 0, 0);	//(Rectangle(x, y, Breite, Hï¿½he), geschwindigkeitX, GeschwindigkeitY)
+
         this.playerImg = playerImg;
         this.maxX = maxX;
         this.maxY = maxY;
@@ -53,13 +52,15 @@ public class Player extends IGameObject {
 
         final BorderControl rightBorder = new BorderControl(new Rectangle(maxX, 0, 100, maxY));
         rightBorder.forceOutOfBorders(this);*/
-
+        	
         for (int i = 0; i < borders.length; i++) {
             borders[i].forceOutOfArea(this);
+        
         }
     }
 
     public void render(final Graphics g) {
+    	
         final int playerSize = playerImg.getWidth();
         if (isLookingLeft) {
             g.drawImage(playerImg, (int) (Math.floor(getX()) + playerSize), (int) Math.floor(getY()), -playerSize, playerSize, null); // draws the player
@@ -68,6 +69,7 @@ public class Player extends IGameObject {
         } else {
             g.drawImage(playerImg, (int) Math.floor(getX()), (int) Math.floor(getY()), playerSize, playerSize, null); // draws the player
         }
+    
     }
 
     public void setIsLookingLeft(final boolean isLookingLeft) {
