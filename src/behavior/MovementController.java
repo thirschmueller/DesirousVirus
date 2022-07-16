@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 import entities.Player;
 
-public class MovementController extends KeyAdapter {
+public class MovementController extends KeyAdapter {	// MovementController fuer bewegung von Character
 	/*
 	 * Keyadapter statt listener (hat schon alles vom Listener drin) Extend this
 	 * class to create a {@code KeyEvent} listener and override the methods for the
@@ -99,7 +99,7 @@ public class MovementController extends KeyAdapter {
 		}
 	}
 
-	@Override // Overide überschreibt übergeordnete Klassen (wenn Action performt darüber
+	@Override // Overide ueberschreibt uebergeordnete Klassen (wenn Action performt darueber
 	// steht du aber etwas anderes als action haben willst)
 	public void keyTyped(KeyEvent e) {
 		System.out.println("Pressed: " + e.getKeyChar() + ", (code: " + e.getKeyCode() + ")"); // erkennen welche taste

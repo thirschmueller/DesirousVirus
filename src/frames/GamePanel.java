@@ -14,9 +14,9 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener{			// extends nutzen, wenn man eine child klasse ableitet oder erstellt von der parent class(super class) 
 																			//implements wenn man ein interface implementieren will
-	final int PANEL_WIDTH = 1280;
-	final int PANEL_HEIGHT = 720;
-	Image virus;
+	final int PANEL_WIDTH = 1280;	// Breite des Panel wird festgelegt (deklariert und initialisiert) 
+	final int PANEL_HEIGHT = 720;	// Höhe ... (siehe oben)
+	Image virus;	
 	Image backgroundImage;
 	Timer timer;
 	int xVelocity = 1;

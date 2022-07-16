@@ -79,9 +79,9 @@ public class MenuFrame {
           
             
             final JFrame frame = new JFrame(game.title);
-            final JLabel label = new JLabel();	//konvertiert zahl zu einem String 
+            final JLabel label = new JLabel();	 
 //          label.color(Color.black);
-            label.setText(String.valueOf(game.getScore()));
+            label.setText(String.valueOf(game.getScore())); //konvertiert zahl zu einem String
 //          label.setFont(game.getFont());
             label.setLocation(200, 200);
 //          label.drawString("" + game.getScore(), 200, 200);	//position von schrift 
