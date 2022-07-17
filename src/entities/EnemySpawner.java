@@ -52,16 +52,11 @@ public class EnemySpawner implements Runnable {
     @Override
     /* Methode, dass Gegner über die Blutbahnen laufen. Wenn sie Bildschirm verlassen, sollen neue Gegnaer nach gewisser Zeit gespawnt werden */
     public void run() {
-        while (isRunning) {	//wenn es nicht unterbrochen wird durchführen
-            for (int i = 0; i < enemies.length; i++) {	//für jeden leukocyt ausführen
-                if (enemies[i] == null || enemies[i].getIsDead()) {	//wenn es noch nicht die gewünschte Anzahl der gegner gibt 
-                    enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), enemyScale, isLeft);	//wenn er am ende des Bildschirms ist wird er als tot angesehen --> neu spawnen
-
-        while (!Thread.currentThread().isInterrupted()) {			// wenn es nicht unterbrochen wird --> durchfuehren
+        while (isRunning) {											// wenn es nicht unterbrochen wird --> durchfuehren
             for (int i = 0; i < enemies.length; i++) {				// fuer jeden Leukocyt ausfuehren
-                if (enemies[i] == null || enemies[i].getIsDead()) {	// wenn es noch nicht die gewuenschte Anzahl der Gegner gibt 
-                    enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), enemyScale, isLeft);	// wenn er am Ende des Bildschirms ist, wird er als tot angesehen --> neu spawnen
-
+                if (enemies[i] == null || enemies[i].getIsDead()) {	// wenn es noch nicht die gewuenschte Anzahl der Gegner gibt  
+                    enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), enemyScale, isLeft);	//wenn er am ende des Bildschirms ist wird er als tot angesehen --> neu spawnen
+       
                     try {
                         Thread.sleep((long) RandomGen.randomBetween(20000 / (double) enemies.length, 40000 / (double) enemies.length));	// Wartezeit festlegen und random stellen (auf die Anzahl der Gegner bezogen)
                     } catch (InterruptedException e) {
@@ -73,6 +68,7 @@ public class EnemySpawner implements Runnable {
                 
     }            
 
+    /**/
     public void stop() {
     	this.isRunning = false;
     }
