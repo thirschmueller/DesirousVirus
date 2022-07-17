@@ -1,9 +1,11 @@
 package entities;
 
 import utils.RandomGen;
+import utils.CollisionDetection;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+
 
 public class EnemySpawner implements Runnable {
     private Enemy[] enemies;
@@ -69,31 +71,11 @@ public class EnemySpawner implements Runnable {
     private boolean collisionCheckAll(final IGameObject obj) {
         boolean hit = false;
         for (final Enemy e : enemies) {
-            if (e != null && collisionCheckSingle(e, obj)) {
+            if (e != null && CollisionDetection.collisionCheckSingle(e.getBorder(), obj.getBorder())) {
                 hit = true;
                 break;
             }
         }
         return hit;
-    }
-
-    private boolean collisionCheckSingle(final IGameObject obj1, final IGameObject obj2) {	//kolision detection
-        // Location obj 1
-        double centerX1 = obj1.getBorder().getCenterX();
-        double centerY1 = obj1.getBorder().getCenterY();
-
-        // Location obj 1
-        double centerX2 = obj2.getBorder().getCenterX();
-        double centerY2 = obj2.getBorder().getCenterY();
-
-        // Calculate the distance between the center of obj1 and obj2
-        double diffX = centerX1 - centerX2;
-        double diffY = centerY1 - centerY2;
-
-        double distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
-
-        // Compare with minimum distance
-        double minDistance = obj1.getBorder().getWidth() / 2 + obj2.getBorder().getWidth() / 2;
-        return distance <= minDistance*0.8;
     }
 }
