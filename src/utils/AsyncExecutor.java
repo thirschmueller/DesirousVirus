@@ -5,8 +5,7 @@ import java.util.concurrent.Executors;
 
 public class AsyncExecutor {	//performance Verbesserung
 	private static final ExecutorService executor = Executors.newFixedThreadPool(10);	//erstellen von mehreren Threads (ExecutorService managed die Threads)
-    private static boolean isRunning;
-    
+
     /* Methode kann hier Ziel der Threads angeben*/
     public synchronized static void addTask(final Runnable target) {
     	executor.execute(target);

@@ -5,7 +5,6 @@ import entities.EnemySpawnerDelegator;
 import controllers.MovementController;
 import entities.Heart;
 import entities.Player;
-import utils.AsyncExecutor;
 import utils.BufferedImageUtils;
 import utils.Highscore;
 
@@ -23,7 +22,7 @@ public class Game extends Canvas implements Runnable { // canvas = Zeichenklasse
 	private final EnemySpawnerDelegator e = new EnemySpawnerDelegator();
 	private Highscore h;
 	private Heart heart;
-	private boolean isRunning = true;
+
 
 	public void init() { // initialisiert entities
 
