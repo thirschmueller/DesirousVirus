@@ -7,8 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class BufferedImageUtils {	//performance, da die Bilder im Hintergrund geladen werden und skaliert werden
+public class BufferedImageUtils {	// fuer performance, da die Bilder im Hintergrund geladen werden und skaliert werden
 
+	/*Konstruktor fuers Laden der Bilder aus Pfad*/
     public static BufferedImage loadImage(final String path) {
         BufferedImage image;
         try {
@@ -21,6 +22,7 @@ public class BufferedImageUtils {	//performance, da die Bilder im Hintergrund ge
         return image;
     }
 
+    /*Konstruktor fuers Skalieren der geladenen Bilder*/
     public static BufferedImage scaleImage(final BufferedImage image, final double scale) {
         int w = image.getWidth();
         int h = image.getHeight();
@@ -31,6 +33,7 @@ public class BufferedImageUtils {	//performance, da die Bilder im Hintergrund ge
         return scaleOp.filter(image, after);
     }
 
+    /*Methode gibt skaliertes Bild zurück*/
     public static int getScaled(final double toScale, final double scale) {
         return (int) Math.floor(toScale * scale);
     }
