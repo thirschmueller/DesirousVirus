@@ -33,9 +33,5 @@ public class EnemySpawnerDelegator {
         }
         return hit;
     }
-	public void stop() { 
-		for (final EnemySpawner e : spawners) {
-			e.stop();
-		}
-	}
+
 }

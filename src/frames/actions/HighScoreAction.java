@@ -17,6 +17,6 @@ public class HighScoreAction implements ActionListener {
 	public void actionPerformed(ActionEvent e) {	//wenn der Button gedrueckt wurde soll das Menuefenster sich schließen 
 		menu.dispose();
 		new HighScoreFrame();	//öffnen von dem Highscoreframe
-
+		//hier wuerde eine Highscore Tabelle noch folgen
 	}
 }

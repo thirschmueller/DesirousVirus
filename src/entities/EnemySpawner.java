@@ -64,15 +64,10 @@ public class EnemySpawner implements Runnable {
                     }
                 }
             }
-        }
-                
+        }                
     }            
 
-    /**/
-    public void stop() {
-    	this.isRunning = false;
-    }
-    
+
     /*Methode gibt zurück, ob eine Kollision des Gegners mit dem Spieler stattgefunden hat*/ 
     private boolean collisionCheckAll(final IGameObject obj) {
         boolean hit = false;
