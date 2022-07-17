@@ -19,7 +19,7 @@ public abstract class IGameObject {
     public abstract void render(final Graphics g);
 
     /*Methode gibt an, dass die neue Position die alte Postion + die Geschwindigkeit ist.*/
-    public abstract void tick() {
+    public void tick() {
         x += velX;
         y += velY;
     }

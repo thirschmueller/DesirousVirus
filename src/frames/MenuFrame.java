@@ -16,11 +16,10 @@ public class MenuFrame extends JFrame {
 	private static final JButton buttonHighScore = new JButton("Highscore");
 	private static final JButton buttonOption = new JButton("Options");
 	private static final JButton buttonExit = new JButton("Exit");
-
+	
 	/* Konstruktor für die GUI des Menüs. 
 	 * Hier werden Position, Größe, Abstände, Schrift und Farbe der 4 Buttons festgelegt. 
 	 * Eine Aktion wird soll beim Klicken auf einen Knopf ausgeführt werden*/
-	
 	public MenuFrame() {
         
 		buttonPlay.setAlignmentX(Component.CENTER_ALIGNMENT); // zentriert ausgelegt
@@ -72,7 +71,7 @@ public class MenuFrame extends JFrame {
 		pack();
 		setVisible(true);
 
-		buttonPlay.addActionListener(new PlayAction(this));
+		buttonPlay.addActionListener(new PlayAction(this));		//PlayAction zum Playbutton hinzufuegen
 		buttonHighScore.addActionListener(new HighScoreAction(this));
 		buttonOption.addActionListener(new OptionAction(this));
 		buttonExit.addActionListener(new ExitAction(this));

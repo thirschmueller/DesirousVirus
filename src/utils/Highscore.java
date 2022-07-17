@@ -8,13 +8,11 @@ public class Highscore {
 	private final DataStorage storage;
 	private final int x, y;
 	
-	/* Methode speichert Highscore*/
 	public Highscore(final int x, final int y) throws URISyntaxException {
 		this.x = x;
 		this.y = y;
-		final String saveDataPath = Highscore.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-		storage = new DataStorage(saveDataPath, "highscore"); // speichert die Daten von Highscore bei der Jar von dem
-																// Spiel);
+		final String saveDataPath = Highscore.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();	// speichert die Daten von Highscore bei der .Jar von dem Spiel
+		storage = new DataStorage(saveDataPath, "Highscore"); //Dateiname wird auf Highscore gesetzt
 	}
 
 	/* Methode lässt Highscore pro tick um angegebenen Wert abnehmen*/
@@ -22,7 +20,7 @@ public class Highscore {
 		highScore -= 0.1;
 	}
 
-	/* Methode rendert Highscore*/
+	/* Methode zeichnet die Schrift des Highscores*/
 	public void render(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g.setFont(new Font("Goudy Stout", Font.PLAIN, 35));
@@ -43,7 +41,4 @@ public class Highscore {
 		return Integer.parseInt((String) storage.load());
 	}
 	
-	//aufrufen mit loadHighscore
-	//am besten dahin verlinke (Highscore GUI)
-
 }

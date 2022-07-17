@@ -27,8 +27,8 @@ public class EnemySpawner implements Runnable {
         this.enemyImg = enemyImg;
     }
 
-    /*Methode gibt an, dass neuer Enemy spawnen soll, wenn er aus Bild verschwindet*/
-    public boolean tick(final IGameObject obj) {	//
+    /*Methode gibt an was bassieren soll wenn ein hit mit dem Player stattfindet und wird dann in Game definiert*/
+    public boolean tick(final IGameObject obj) {	
         if (collisionCheckAll(obj)) {
             return true;
         }
@@ -40,8 +40,8 @@ public class EnemySpawner implements Runnable {
         return false;
     }
 
-    /*Methode rendert neu gespawnten Enemy*/
-    public void render(Graphics g) {
+    /*Methode rendert neu gespawnte Gegner*/
+    public void render(Graphics g) {	
         for (Enemy enemy : enemies) {
             if (enemy != null) {
                 enemy.render(g);
@@ -53,8 +53,8 @@ public class EnemySpawner implements Runnable {
     /* Methode, dass Gegner über die Blutbahnen laufen. Wenn sie Bildschirm verlassen, sollen neue Gegnaer nach gewisser Zeit gespawnt werden */
     public void run() {
         while (isRunning) {											// wenn es nicht unterbrochen wird --> durchfuehren
-            for (int i = 0; i < enemies.length; i++) {				// fuer jeden Leukocyt ausfuehren
-                if (enemies[i] == null || enemies[i].getIsDead()) {	// wenn es noch nicht die gewuenschte Anzahl der Gegner gibt  
+            for (int i = 0; i < enemies.length; i++) {			
+                if (enemies[i] == null || enemies[i].getIsDead()) {	
                     enemies[i] = new Enemy(enemyImg, RandomGen.randomBetween(minY, maxY), maxX, RandomGen.randomBetween(1, 4), enemyScale, isLeft);	//wenn er am ende des Bildschirms ist wird er als tot angesehen --> neu spawnen
        
                     try {
@@ -73,7 +73,7 @@ public class EnemySpawner implements Runnable {
     	this.isRunning = false;
     }
     
-    /*Methode gibt zurück, ob eine Kollision des Gegners mit dem Spielfeldrand stattgefunden hat*/ 
+    /*Methode gibt zurück, ob eine Kollision des Gegners mit dem Spieler stattgefunden hat*/ 
     private boolean collisionCheckAll(final IGameObject obj) {
         boolean hit = false;
         for (final Enemy e : enemies) {

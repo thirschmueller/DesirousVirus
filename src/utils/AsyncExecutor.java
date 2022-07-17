@@ -9,7 +9,7 @@ public class AsyncExecutor {	//performance Verbesserung
     private static boolean isRunning;
     
     /* Methode kann hier Ziel der Threads angeben*/
-    public static void addTask(final Runnable target) { //Runnable sorgt dafür, dass etwas ausfuehrbar ist --> muss dann überschrieben werden
+    public static void addTask(final Runnable target) {
         executor.execute(target);
         isRunning = true;
     }

@@ -10,26 +10,26 @@ import frames.MenuFrame;
 import utils.AsyncExecutor;
 
 public class PlayAction implements ActionListener {
-	private final static GameFrame game = new GameFrame();
-	private final static JFrame gFrame = new JFrame(GameFrame.title);
+	private final static GameFrame game = new GameFrame();	
+	private final static JFrame gFrame = new JFrame(GameFrame.title);	//Titel mit übertragen
 	private final MenuFrame menu;
 
-	public PlayAction(final MenuFrame menu) {
+	public PlayAction(final MenuFrame menu) {	//Play button im Menuefenster
 		this.menu = menu;
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {	//wenn der Play button gedrueckt wird startet sich das Spiel
 		menu.dispose();
 
-		gFrame.getContentPane().add(game);
+		gFrame.getContentPane().add(game);	//die Methoden von Game werden hinzugefügt 
 		gFrame.pack();
-		gFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
-		gFrame.requestFocus(); // key input are recognised by the frame without clicking once on it
+		gFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // sorgt fuer fullscreen
+		gFrame.requestFocus(); //man muss nicht in das Fenster clicken, sodass die Tasten erkannt werden
 		gFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gFrame.setLocationRelativeTo(null); // centers window on screen
-		gFrame.setVisible(true); // shows the frame
+		gFrame.setLocationRelativeTo(null); //setzt das frame in die Mitte des Bildschirms 
+		gFrame.setVisible(true); 
 
-		AsyncExecutor.addTask(game); // starts game loop in new thread
+		AsyncExecutor.addTask(game); //startet den gameloop in einem neuen Thread
 		while(AsyncExecutor.isRunning()) {
 			try {
 				Thread.sleep(10);

@@ -10,13 +10,13 @@ public class HighScoreAction implements ActionListener {
 
 	private final MenuFrame menu;
 
-	public HighScoreAction(final MenuFrame menu) {
+	public HighScoreAction(final MenuFrame menu) {	//Highscore button im Menuefenster
 		this.menu = menu;
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {	//wenn der Button gedrueckt wurde soll das Menuefenster sich schließen 
 		menu.dispose();
-		new HighScoreFrame();
+		new HighScoreFrame();	//öffnen von dem Highscoreframe
 
 	}
 }
