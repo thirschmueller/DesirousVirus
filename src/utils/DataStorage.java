@@ -30,8 +30,8 @@ public class DataStorage {
 
 	}
 
-	/* Methode */
-	public Object load() {	//object = allgemeinte Klasse --> jede Klasse erbt davon und jede ist ein Object (int/double nicht)
+	/* Methode laedt den hoechsten Highscore*/
+	public Object load() {	
 		Object data = null;
 		try {
 			File f = new File(saveDataPath, fileName);
@@ -45,10 +45,10 @@ public class DataStorage {
 			e.printStackTrace();
 		}
 		return data;
-	
 
 	}
-
+		
+	/*Methode legt den Highscore fest*/
 	public void set(final String data) {
 		FileWriter output;
 
@@ -56,9 +56,7 @@ public class DataStorage {
 			File f = new File(saveDataPath, fileName);
 			output = new FileWriter(f);
 			BufferedWriter writer = new BufferedWriter(output);
-
 			writer.write(data);
-
 			writer.close();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -25,32 +25,32 @@ public class BorderControl {
         final boolean containsBottomRight = border.contains(object.getX() + object.getBorder().getWidth(), object.getY() + object.getBorder().getHeight()); //untere rechte Ecke
 
         if (containsTopRight && containsBottomRight) { //oben rechts + unten rechts
-            crossed.add(BorderCrossed.LEFT);			// --> links überschritten
+            crossed.add(BorderCrossed.LEFT);			// --> zuruecksetzten nach links
             return crossed;
         }
         if (containsBottomLeft && containsBottomRight) { //unten links + unten rechts 
-            crossed.add(BorderCrossed.TOP);				// --> oben überschritten
+            crossed.add(BorderCrossed.TOP);				// --> zuruecksetzen nach oben
             return crossed;
         }
         if (containsTopLeft && containsBottomLeft) { //oben links + unten links
-            crossed.add(BorderCrossed.RIGHT);		// --> rechts überschritten
+            crossed.add(BorderCrossed.RIGHT);		// --> zureucksetzen nach rechts
             return crossed;
         }
         if (containsTopLeft && containsTopRight) { //oben links + oben rechts
-            crossed.add(BorderCrossed.BOTTOM); 		// --> unten überschritten
+            crossed.add(BorderCrossed.BOTTOM); 		// --> zuruecksetzen nach unten
             return crossed;
         }
 
-        if (containsTopRight || containsBottomRight) { //oben rechts oder unten rechts
+        if (containsTopRight || containsBottomRight) {
             crossed.add(BorderCrossed.LEFT);
         }
-        if (containsBottomLeft || containsBottomRight) { //unten links oder unten rechts 
+        if (containsBottomLeft || containsBottomRight) {
             crossed.add(BorderCrossed.TOP);
         }
-        if (containsTopLeft || containsBottomLeft) { //oben links oder unten links
+        if (containsTopLeft || containsBottomLeft) { 
             crossed.add(BorderCrossed.RIGHT);
         }
-        if (containsTopLeft || containsTopRight) { //oben links oder oben rechts
+        if (containsTopLeft || containsTopRight) { 
             crossed.add(BorderCrossed.BOTTOM);
         }
         return crossed;
