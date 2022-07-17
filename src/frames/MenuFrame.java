@@ -23,15 +23,19 @@ public class MenuFrame {
 	private final Component verticalStrut_2 = Box.createVerticalStrut(40);
 	private final Component verticalStrut_3 = Box.createVerticalStrut(40);
 
+	/* Konstruktor für die GUI des Menüs. 
+	 * Hier werden Position, Größe, Abstände, Schrift und Farbe der 4 Buttons festgelegt. 
+	 * Eine Aktion wird soll beim Klicken auf einen Knopf ausgeführt werden*/
+	
 	public MenuFrame() {
-		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		button1.setBounds(100, 50, 100, 30);
+		button1.setAlignmentX(Component.CENTER_ALIGNMENT); // zentriert ausgelegt
+		button1.setBounds(100, 50, 100, 30); // x-Koordinate, y-Koordinate, Breite, Höhe
 
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // Vertikal ausgelegt
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // vertikal ausgelegt
 		
-		panel.add(verticalStrut);
+		panel.add(verticalStrut); // Abstand zum nächsten Button
 
-		panel.add(button1);
+		panel.add(button1); // Hinzufügen des 1. Buttons
 		
 		panel.add(verticalStrut_1);
 		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -90,49 +94,57 @@ public class MenuFrame {
 		final static Game game = new Game();
 		final static JFrame gFrame = new JFrame(Game.title);
 
+		/* Methode für Aktionen, wenn auf Buttons geklickt wird.
+		 * */
+		
 		public void actionPerformed(ActionEvent e) {
 
-			if (e.getSource() == button1) {
+			/* Bei "Play" wird das Menü geschlossen und das Spiel geöffnet.*/
+			if (e.getSource() == button1) { 
 
 				MenuFrame.menuFrame.dispose();
 
 				gFrame.getContentPane().add(game);
 				gFrame.pack();
-				gFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
-				gFrame.requestFocus(); // key input are recognised by the frame without clicking once on it
+				gFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 		// Fenster wird auf full screen gesetzt
+				gFrame.requestFocus(); 									// key input are recognised by the frame without clicking once on it
 				gFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				gFrame.setLocationRelativeTo(null); // centers window on screen
-				gFrame.setVisible(true); // shows the frame
+				gFrame.setLocationRelativeTo(null); 					// Fenster wird zentriert
+				gFrame.setVisible(true); 								// zeigt Frame
 
-				new AsyncTask(game); // starts game loop in new thread
+				new AsyncTask(game); // startet Game Loop in neuem Thread
 			}
 
+			/*Bei "Highscores" wird das Menue geschlossen und neuer Frame mit Highscoredaten geoeffnet.*/
 			if (e.getSource() == button2) {
 				JPanel panel = new JPanel();
 				MenuFrame.menuFrame.dispose();
 				//	final Highscore highScore = new Highscore(0, 0);
-			//		panel.setLayout(new GridLayout(panel, BoxLayout.PAGE_AXIS));
+				//	panel.setLayout(new GridLayout(panel, BoxLayout.PAGE_AXIS));
 					
 					
 					final JFrame hFrame = new JFrame();
 				//	hFrame.add(game);
 					hFrame.pack();
-					hFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
-					hFrame.requestFocus(); // key input are recognised by the frame without clicking once on it
+					hFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+					hFrame.requestFocus(); 
 					hFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					hFrame.setLocationRelativeTo(null); // centers window on screen
-					hFrame.setVisible(true); // shows the frame
+					hFrame.setLocationRelativeTo(null); 
+					hFrame.setVisible(true); 
 		
 
 				// open Highscore
 			}
 
+			/*Bei "Options" wird das Menue geschlossen und es soll ein neuer Frame mit Optionen geoeffnet werden. 
+			 * Wegen Zeitmangel oeffnet sich erst mal nur ein neues leeres Fenster*/
 			if (e.getSource() == button3) {
 				MenuFrame.menuFrame.dispose();
 
 				// options
 			}
 
+			/*Bei "Exit" wird das Menue geschlossen.*/
 			if (e.getSource() == button4) {
 				MenuFrame.menuFrame.dispose();
 

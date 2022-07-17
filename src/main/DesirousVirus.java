@@ -2,7 +2,8 @@ package main;
 import frames.MenuFrame;
 
 public class DesirousVirus {
-    public static void main(String[] args) {
+	// standardisierte main-Methode, die das Spiel startet:
+    public static void main(String[] args) { 
         new MenuFrame();
     }
 }
