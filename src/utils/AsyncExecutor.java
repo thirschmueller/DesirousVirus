@@ -5,22 +5,25 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class AsyncExecutor {	//performance Verbesserung
-    private static final ExecutorService executor = Executors.newFixedThreadPool(ManagementFactory.getThreadMXBean().getThreadCount());	//erstellen von mehreren Threads(ExecutorService managed die Threads)
+    private static final ExecutorService executor = Executors.newFixedThreadPool(ManagementFactory.getThreadMXBean().getThreadCount());	//erstellen von mehreren Threads (ExecutorService managed die Threads)
     private static boolean isRunning;
     
-    public static void addTask(final Runnable target) { // ziel der threads kann hierüber angegeben werden (Runnable sorgt dafür, dass etwas ausführbar ist --> muss dann überschrieben werden)
+    /* Methode kann hier Ziel der Threads angeben*/
+    public static void addTask(final Runnable target) { //Runnable sorgt dafür, dass etwas ausfuehrbar ist --> muss dann überschrieben werden
         executor.execute(target);
         isRunning = true;
     }
 
-    public static void stop() {	//wenn das spiel geschlossen wird, sollen alle threads gestoppt werden 
+    /* Methode soll alle Threads stoppen, wenn das Spiel geschlossen wird*/
+    public static void stop() {	
         executor.shutdownNow();
     //    waitTillTermination();
         isRunning = false;
     }
     
-    public static void waitTillTermination () {	//synchronized = nicht parallel ausführen von dem und den Methoden davor 
-        while (!executor.isTerminated()) { // wait till all threads are finished
+    /* Methode */
+    public static void waitTillTermination () {		//synchronized = nicht parallel ausfuehren von dem und den Methoden davor 
+        while (!executor.isTerminated()) { 			// wartet bis alle Threads ausgefuehrt haben
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
@@ -30,6 +33,7 @@ public class AsyncExecutor {	//performance Verbesserung
     	
     }
     
+    /*Methode gibt zurück, dass das Spiel läuft*/
     public static boolean isRunning () {
     	return isRunning;	
     }

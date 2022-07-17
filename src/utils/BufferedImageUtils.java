@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class BufferedImageUtils {	// fuer performance, da die Bilder im Hintergrund geladen werden und skaliert werden
 
-	/*Konstruktor fuers Laden der Bilder aus Pfad*/
+	/*Methode fuers Zurückgeben des Bildes aus Pfad*/
     public static BufferedImage loadImage(final String path) {
         BufferedImage image;
         try {
@@ -22,6 +22,7 @@ public class BufferedImageUtils {	// fuer performance, da die Bilder im Hintergr
         return image;
     }
 
+    /*Methode fuers Skalieren des Bildes aus Pfad*/
     public static int getScaled(final double toScale, final double scale) {
         return (int) Math.floor(toScale * scale);
     }
