@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import frames.MenuFrame;
-import main2.Game;
+import frames.Game;
 import utils.AsyncExecutor;
 
 public class PlayAction implements ActionListener {
