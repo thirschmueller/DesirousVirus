@@ -15,6 +15,7 @@ public class DataStorage {
 		this.fileName = fileName;
 	}
 	
+	/* Methode speichert Daten in erstellten File rein*/
 	public void createSaveData() {
 		try {
 			File file = new File(saveDataPath, fileName);
@@ -29,6 +30,7 @@ public class DataStorage {
 
 	}
 
+	/* Methode */
 	public Object load() {	//object = allgemeinte Klasse --> jede Klasse erbt davon und jede ist ein Object (int/double nicht)
 		Object data = null;
 		try {
