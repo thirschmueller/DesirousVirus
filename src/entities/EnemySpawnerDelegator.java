@@ -1,18 +1,19 @@
-package behavior;
+package entities;
 
 import entities.EnemySpawner;
 import entities.Player;
+import utils.AsyncExecutor;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnemySpawnerDelegator {
-    private List<EnemySpawner> spawners = new ArrayList<>();
+    private final List<EnemySpawner> spawners = new ArrayList<>();
 
     public void addSpawner(final EnemySpawner e) {	//neuer Thread für spawner
         spawners.add(e);
-        new AsyncTask(e);	
+        AsyncExecutor.addTask(e);
     }
 
     public void render(final Graphics g) {	//neuer Thread für render

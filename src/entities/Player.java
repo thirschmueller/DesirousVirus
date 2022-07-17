@@ -7,13 +7,13 @@ import java.awt.image.BufferedImage;
 
 public class Player extends IGameObject {
 
-    private BufferedImage playerImg;    //Zeichnet im hintegrund ein Bild, welches dann sichtbar gemacht werden kann
+    private final BufferedImage playerImg;    //Zeichnet im hintegrund ein Bild, welches dann sichtbar gemacht werden kann
 
     private boolean isLookingLeft = true;
 
-    private BorderControl[] borders;
+    private final BorderControl[] borders;
 
-    private double scale;
+    private final double scale;
 
 
     public Player(final double x, final double y, final BufferedImage playerImg, final int maxX, final int maxY, final double scale) {
@@ -44,9 +44,8 @@ public class Player extends IGameObject {
         super.x += super.velX;	//super, weil es alles aus player und IGameObjects können soll 
         super.y += super.velY;
 
-        for (int i = 0; i < borders.length; i++) {
-            borders[i].forceOutOfArea(this);
-
+        for (BorderControl border : borders) {
+            border.forceOutOfArea(this);
         }
     }
 

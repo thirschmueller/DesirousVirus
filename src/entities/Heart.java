@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Heart {
     // tick method, die ckecke ob der Player in der Box ist --> return true
-    private Rectangle r;
+    private final Rectangle r;
 
     public Heart(final Rectangle r) {
         this.r = r;

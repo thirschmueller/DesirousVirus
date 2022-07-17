@@ -1,12 +1,10 @@
-package main2;
+package frames;
 
-import behavior.AsyncTask;
 import entities.EnemySpawner;
-import behavior.EnemySpawnerDelegator;
-import behavior.MovementController;
+import entities.EnemySpawnerDelegator;
+import controllers.MovementController;
 import entities.Heart;
 import entities.Player;
-import frames.MenuFrame;
 import utils.BufferedImageUtils;
 import utils.Highscore;
 
@@ -16,13 +14,12 @@ import java.awt.image.BufferedImage;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
-public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
-    private static final long serialVersionUID = 1L;
+public class GameFrame extends Canvas implements Runnable { // canvas = ZeichneKlasse
     public static final String title = "Desirous Virus";
-    private static BufferedImage backgroundImg;
+    private BufferedImage backgroundImg;
 
-    private static Player p;
-    private static EnemySpawnerDelegator e = new EnemySpawnerDelegator();
+    private Player p;
+    private final EnemySpawnerDelegator e = new EnemySpawnerDelegator();
     private Highscore h;
     private Heart heart;
 
@@ -47,8 +44,7 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31), getWidth() + enemyImg.getWidth(), true, enemyScale, 15));
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.23), getScaledHeight(0.31), getWidth() + enemyImg.getWidth(), false, enemyScale, 15));
 
-        addKeyListener(
-                new MovementController(p, getWidth() - playerImg.getWidth(), getHeight() - playerImg.getHeight())); // adden
+        addKeyListener(new MovementController(p)); // adden
         // von
         // Movementcontroller
 
@@ -58,7 +54,7 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
 
             e1.printStackTrace();
         }
-       	System.out.println("" + h.loadHighScore());
+        System.out.println("" + h.loadHighScore());
     }
 
     @Override

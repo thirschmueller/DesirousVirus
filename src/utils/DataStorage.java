@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 
 public class DataStorage {
-	private String saveDataPath, fileName;
+	private final String saveDataPath, fileName;
 	
 	public DataStorage(final String saveDataPath, final String fileName) {
 		this.saveDataPath = saveDataPath;
@@ -48,7 +48,7 @@ public class DataStorage {
 	}
 
 	public void set(final String data) {
-		FileWriter output = null;
+		FileWriter output;
 
 		try {
 			File f = new File(saveDataPath, fileName);

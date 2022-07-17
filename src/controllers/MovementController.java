@@ -1,4 +1,4 @@
-package behavior;
+package controllers;
 
 import entities.Player;
 
@@ -18,13 +18,9 @@ public class MovementController extends KeyAdapter {
 
     private final Player p;
 
-    private final int maxX, maxY;
-
-    public MovementController(final Player p, final int maxX, final int maxY) { // Konstruktor
+    public MovementController(final Player p) { // Konstruktor
         this.p = p; // wird genutzt, da man das coordinatensystem aus der Klasse Player verwenden
         // will
-        this.maxX = maxX; // maximale größe definieren
-        this.maxY = maxY; // this. --> Dass es weiss dass man auf das oben definierte Objekt verweist
     }
 
     public void keyPressed(KeyEvent e) {
@@ -32,33 +28,23 @@ public class MovementController extends KeyAdapter {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W: // Vk ist das Virtual keyboard, welches vordefiniert ist aber die Tasten lesbar
+            case KeyEvent.VK_UP:
                 // macht (keine keycodes)
                 p.setVelY(-speed); // negativer speed in y richtung, wenn w gedrückt wird
                 break;
             case KeyEvent.VK_A:
-                p.setIsLookingLeft(true);
-                p.setVelX(-speed);
-                break;
-            case KeyEvent.VK_S:
-                p.setVelY(speed);
-                break;
-            case KeyEvent.VK_D:
-                p.setIsLookingLeft(false);
-                p.setVelX(speed);
-                break;
             case KeyEvent.VK_LEFT:
                 p.setIsLookingLeft(true);
                 p.setVelX(-speed);
                 break;
-            case KeyEvent.VK_UP:
-                p.setVelY(-speed);
+            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
+                p.setVelY(speed);
                 break;
+            case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
                 p.setIsLookingLeft(false);
                 p.setVelX(speed);
-                break;
-            case KeyEvent.VK_DOWN:
-                p.setVelY(speed);
                 break;
         }
     }
@@ -73,12 +59,5 @@ public class MovementController extends KeyAdapter {
                 || keyCode == KeyEvent.VK_RIGHT) {
             p.setVelX(0);
         }
-    }
-
-    @Override // Overide überschreibt übergeordnete Klassen (wenn Action performt darüber
-    // steht du aber etwas anderes als action haben willst)
-    public void keyTyped(KeyEvent e) {
-        //System.out.println("Pressed: " + e.getKeyChar() + ", (code: " + e.getKeyCode() + ")"); // erkennen welche taste
-        // gedrückt wird
     }
 }

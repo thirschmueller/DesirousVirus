@@ -8,11 +8,11 @@ import java.awt.image.BufferedImage;
 
 
 public class EnemySpawner implements Runnable {
-    private Enemy[] enemies;
+    private final Enemy[] enemies;
 
-    private double minY, maxY, maxX, enemyScale;
-    private boolean isLeft;	//Blickrichtung
-    private BufferedImage enemyImg;
+    private final double minY, maxY, maxX, enemyScale;
+    private final boolean isLeft;	//Blickrichtung
+    private final BufferedImage enemyImg;
 
     public EnemySpawner(final BufferedImage enemyImg, final double minY, final double maxY, final double maxX, final boolean isLeft, final double enemyScale, final int maxEnemies) {	//wird in Game verwendet
         this.enemies = new Enemy[maxEnemies];	//maximale gegner anzahl wird noch festgelegt (anzahl der positionen im Array)
@@ -49,7 +49,6 @@ public class EnemySpawner implements Runnable {
 
     @Override
     public void run() {
-
         while (!Thread.currentThread().isInterrupted()) {	//wenn es nicht unterbrochen wird durchführen
             for (int i = 0; i < enemies.length; i++) {	//für jeden leukocyt ausführen
                 if (enemies[i] == null || enemies[i].getIsDead()) {	//wenn es noch nicht die gewünschte Anzahl der gegner gibt 
@@ -63,10 +62,7 @@ public class EnemySpawner implements Runnable {
                 }
             }
         }
-                
     }           
-        
-    
 
     private boolean collisionCheckAll(final IGameObject obj) {
         boolean hit = false;

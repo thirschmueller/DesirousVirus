@@ -21,16 +21,6 @@ public class BufferedImageUtils {	//performance, da die Bilder im Hintergrund ge
         return image;
     }
 
-    public static BufferedImage scaleImage(final BufferedImage image, final double scale) {
-        int w = image.getWidth();
-        int h = image.getHeight();
-        BufferedImage after = new BufferedImage((int) (w * scale), (int) (h * scale), BufferedImage.TYPE_INT_ARGB);
-        AffineTransform at = new AffineTransform();
-        at.scale(scale, scale);
-        AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        return scaleOp.filter(image, after);
-    }
-
     public static int getScaled(final double toScale, final double scale) {
         return (int) Math.floor(toScale * scale);
     }

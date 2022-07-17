@@ -1,21 +1,12 @@
 package utils;
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.net.URISyntaxException;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 public class Highscore {
-
-	public static final String title = "Highscore";
 	private double highScore = 1000;
-	private DataStorage storage;
-	private int x, y;
+	private final DataStorage storage;
+	private final int x, y;
 	
 	public Highscore(final int x, final int y) throws URISyntaxException {
 		this.x = x;
@@ -33,7 +24,7 @@ public class Highscore {
 		Graphics2D g2 = (Graphics2D) g;
 		g.setFont(new Font("Goudy Stout", Font.PLAIN, 35));
 		g2.setColor(Color.red);
-		g.drawString("Score: " + String.valueOf((int) highScore), x, y); // render in Highscore, was ich dann hier reinschreiben
+		g.drawString("Score: " + (int) highScore, x, y); // render in Highscore, was ich dann hier reinschreiben
 	}
 
 	public void storeHighScore() {
