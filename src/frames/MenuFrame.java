@@ -1,156 +1,81 @@
 package frames;
 
-import utils.AsyncExecutor;
-
 import javax.swing.*;
+
+import frames.actions.ExitAction;
+import frames.actions.HighScoreAction;
+import frames.actions.OptionAction;
+import frames.actions.PlayAction;
+
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class MenuFrame {
+public class MenuFrame extends JFrame {
 
-	private static final JFrame menuFrame = new JFrame();
 	private static final JPanel panel = new JPanel();
-	private static final JButton button1 = new JButton("Play");
-	private static final JButton button2 = new JButton("Highscores");
-	private static final JButton button3 = new JButton("Options");
-	private static final JButton button4 = new JButton("Exit");
+	private static final JButton buttonPlay = new JButton("Play");
+	private static final JButton buttonHighScore = new JButton("Highscore");
+	private static final JButton buttonOption = new JButton("Options");
+	private static final JButton buttonExit = new JButton("Exit");
 
 	/* Konstruktor für die GUI des Menüs. 
 	 * Hier werden Position, Größe, Abstände, Schrift und Farbe der 4 Buttons festgelegt. 
 	 * Eine Aktion wird soll beim Klicken auf einen Knopf ausgeführt werden*/
 	
 	public MenuFrame() {
-        final Component verticalStrut = Box.createVerticalStrut(40);
         
-		button1.setAlignmentX(Component.CENTER_ALIGNMENT); // zentriert ausgelegt
-		button1.setBounds(100, 50, 100, 30); // x-Koordinate, y-Koordinate, Breite, Höhe
-		
-		
+		buttonPlay.setAlignmentX(Component.CENTER_ALIGNMENT); // zentriert ausgelegt
+		buttonPlay.setBounds(100, 50, 100, 30); // x-Koordinate, y-Koordinate, Breite, Höhe
 
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // vertikal ausgelegt
 		
-		panel.add(verticalStrut); // Abstand zum nächsten Button
+        panel.add(Box.createVerticalStrut(40)); // Abstand zum nächsten Button
+        panel.add(buttonPlay); // Hinzufügen des Play-Buttons
+	
+		panel.add(Box.createVerticalStrut(40));
+		buttonHighScore.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(buttonHighScore);
 
-		panel.add(button1); // Hinzufügen des 1. Buttons
-		
-		panel.add(verticalStrut);
-		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(Box.createVerticalStrut(40));
+		buttonOption.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(buttonOption);
 
-		panel.add(button2);
-		
-		panel.add(verticalStrut);
-		button3.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(Box.createVerticalStrut(40));
+		buttonExit.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(buttonExit);
 
-		panel.add(button3);
-		
-		panel.add(verticalStrut);
-		button4.setAlignmentX(Component.CENTER_ALIGNMENT);
+		buttonPlay.setPreferredSize(new Dimension(300, 120));
 
-		panel.add(button4);
+		buttonPlay.setFont(new Font("Cooper Black", Font.BOLD, 50)); // Schriftart, Fettgedruckt und Größe
+		buttonPlay.setForeground(Color.LIGHT_GRAY); // Schrift Farbe vom Button
+		buttonPlay.setBackground(Color.DARK_GRAY); // Hintegrundfarbe vom Button
+		buttonPlay.setFocusable(false); // keine Border mehr um die Schrift
 
-		button1.setPreferredSize(new Dimension(300, 120));
+		buttonHighScore.setFont(new Font("Cooper Black", Font.PLAIN, 25));
+		buttonHighScore.setForeground(Color.GRAY);
+		buttonHighScore.setBackground(Color.DARK_GRAY);
+		buttonHighScore.setFocusable(false);
 
-		button1.setFont(new Font("Cooper Black", Font.BOLD, 50)); // Schriftart, Fettgedruckt und Größe
-		button1.setForeground(Color.LIGHT_GRAY); // Schrift Farbe vom Button
-		button1.setBackground(Color.DARK_GRAY); // Hintegrundfarbe vom Button
-		button1.setFocusable(false); // keine Border mehr um die Schrift
+		buttonOption.setFont(new Font("Cooper Black", Font.PLAIN, 25));
+		buttonOption.setForeground(Color.GRAY);
+		buttonOption.setBackground(Color.DARK_GRAY);
+		buttonOption.setFocusable(false);
 
-		button2.setFont(new Font("Cooper Black", Font.PLAIN, 25));
-		button2.setForeground(Color.GRAY);
-		button2.setBackground(Color.DARK_GRAY);
-		button2.setFocusable(false);
+		buttonExit.setFont(new Font("Cooper Black", Font.PLAIN, 25));
+		buttonExit.setForeground(Color.GRAY);
+		buttonExit.setBackground(Color.DARK_GRAY);
+		buttonExit.setFocusable(false);
 
-		button3.setFont(new Font("Cooper Black", Font.PLAIN, 25));
-		button3.setForeground(Color.GRAY);
-		button3.setBackground(Color.DARK_GRAY);
-		button3.setFocusable(false);
+		getContentPane().add(panel);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocation(600, 250);
+		setTitle("Menu");
+		pack();
+		setVisible(true);
 
-		button4.setFont(new Font("Cooper Black", Font.PLAIN, 25));
-		button4.setForeground(Color.GRAY);
-		button4.setBackground(Color.DARK_GRAY);
-		button4.setFocusable(false);
-
-		menuFrame.getContentPane().add(panel);
-		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		menuFrame.setLocation(800, 250);
-		menuFrame.setTitle("Minigame");
-		menuFrame.pack();
-		menuFrame.setVisible(true);
-
-		ButtonAction bAction = new ButtonAction();
-
-		button1.addActionListener(bAction);
-		button2.addActionListener(bAction);
-		button3.addActionListener(bAction);
-		button4.addActionListener(bAction);
+		buttonPlay.addActionListener(new PlayAction(this));
+		buttonHighScore.addActionListener(new HighScoreAction(this));
+		buttonOption.addActionListener(new OptionAction(this));
+		buttonExit.addActionListener(new ExitAction(this));
 	}
 
-	public static class ButtonAction implements ActionListener {
-
-		private final static GameFrame game = new GameFrame();
-		private final static JFrame gFrame = new JFrame(GameFrame.title);
-
-		/* Methode für Aktionen, wenn auf Buttons geklickt wird.
-		 * */
-		
-		public void actionPerformed(ActionEvent e) {
-
-			/* Bei "Play" wird das Menü geschlossen und das Spiel geöffnet.*/
-			if (e.getSource() == button1) { 
-
-				MenuFrame.menuFrame.dispose();
-
-				gFrame.getContentPane().add(game);
-				gFrame.pack();
-				gFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 		// Fenster wird auf full screen gesetzt
-				gFrame.requestFocus(); 									// key input are recognised by the frame without clicking once on it
-				gFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				gFrame.setLocationRelativeTo(null); 					// Fenster wird zentriert
-				gFrame.setVisible(true); 								// zeigt Frame
-
-				AsyncExecuter.addTask(game); // startet Game Loop in neuem Thread
-			}
-
-			/*Bei "Highscores" wird das Menue geschlossen und neuer Frame mit Highscoredaten geoeffnet.*/
-			if (e.getSource() == button2) {
-				JPanel panel = new JPanel();
-				MenuFrame.menuFrame.dispose();
-				//	final Highscore highScore = new Highscore(0, 0);
-				//	panel.setLayout(new GridLayout(panel, BoxLayout.PAGE_AXIS));
-					
-					
-					final JFrame hFrame = new JFrame();
-				//	hFrame.add(game);
-					hFrame.pack();
-					hFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-					hFrame.requestFocus(); 
-					hFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					hFrame.setLocationRelativeTo(null); 
-					hFrame.setVisible(true); 
-		
-
-				// open Highscore
-			}
-
-			/*Bei "Options" wird das Menue geschlossen und es soll ein neuer Frame mit Optionen geoeffnet werden. 
-			 * Wegen Zeitmangel oeffnet sich erst mal nur ein neues leeres Fenster*/
-			if (e.getSource() == button3) {
-				MenuFrame.menuFrame.dispose();
-
-				// options
-			}
-
-			/*Bei "Exit" wird das Menue geschlossen.*/
-			if (e.getSource() == button4) {
-				MenuFrame.menuFrame.dispose();
-
-			}
-		}
-
-		public static void restart() {
-			gFrame.dispose();
-			new MenuFrame();
-		}
-	}
 }

@@ -1,7 +1,5 @@
 package entities;
 
-import entities.EnemySpawner;
-import entities.Player;
 import utils.AsyncExecutor;
 
 import java.awt.*;
@@ -9,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnemySpawnerDelegator {
-    private final List<EnemySpawner> spawners = new ArrayList<>();
+	private final List<EnemySpawner> spawners = new ArrayList<>();
 
     /* Methode erstellt neuen Thread fuer spawner*/
     public void addSpawner(final EnemySpawner e) {	
@@ -35,4 +33,9 @@ public class EnemySpawnerDelegator {
         }
         return hit;
     }
+	public void stop() { 
+		for (final EnemySpawner e : spawners) {
+			e.stop();
+		}
+	}
 }
