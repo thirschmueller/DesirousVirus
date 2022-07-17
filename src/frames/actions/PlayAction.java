@@ -11,7 +11,7 @@ import utils.AsyncExecutor;
 
 public class PlayAction implements ActionListener {
 	private final static Game game = new Game();
-	private final static JFrame gFrame = new JFrame(Game.title); // Titel mit übertragen
+	private final static JFrame gameFrame = new JFrame(Game.title); // Titel mit übertragen
 	private final MenuFrame menu;
 
 	public PlayAction(final MenuFrame menu) { // Play button im Menuefenster
@@ -21,15 +21,14 @@ public class PlayAction implements ActionListener {
 	public void actionPerformed(ActionEvent e) { // wenn der Play button gedrueckt wird startet sich das Spiel
 		menu.dispose();
 
-		gFrame.getContentPane().add(game); // die Methoden von Game werden hinzugefügt
-		gFrame.pack();
-		gFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // sorgt fuer fullscreen
-		gFrame.requestFocus(); // man muss nicht in das Fenster clicken, sodass die Tasten erkannt werden
-		gFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gFrame.setLocationRelativeTo(null); // setzt das frame in die Mitte des Bildschirms
-		gFrame.setVisible(true);
+		gameFrame.add(game);
+		gameFrame.pack();
+		gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // makes the window full screen
+		gameFrame.requestFocus(); // key input are recognised by the frame without clicking once on it
+		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gameFrame.setLocationRelativeTo(null); // centers window on screen
+		gameFrame.setVisible(true); // shows the frame
 
 		AsyncExecutor.addTask(game); // startet den gameloop in einem neuen Thread
-	
 	}
 }
