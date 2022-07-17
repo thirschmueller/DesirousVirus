@@ -38,7 +38,7 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
         final double enemyScale = getHeight() / (double) 1370 * 0.05;
 
         p = new Player(getScaledWidth(0.95), getScaledHeight(0.93), playerImg, getWidth(), getHeight(), playerScale);
-        heart = new Heart(new Rectangle((int) (getWidth() * 0.43), (int) (getHeight() * 0.08), (int) (getWidth() * 0.2), (int) (getHeight() * 0.1)));
+        heart = new Heart(new Rectangle((int) (getWidth() * 0.43), (int) (getHeight() * 0.08), (int) (getWidth() * 0.14), (int) (getHeight() * 0.05)));
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.86), getScaledHeight(0.94), getWidth() + enemyImg.getWidth(), false, enemyScale, 10)); // spawner für die gegner mit random
         // höhe(von, bis), und anzahl
         e.addSpawner(new EnemySpawner(enemyImg, getScaledHeight(0.64), getScaledHeight(0.72), getWidth() + enemyImg.getWidth(), true, enemyScale, 15)); // width wichtig für die erkennung wann sie
@@ -58,7 +58,7 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
 
             e1.printStackTrace();
         }
-        //	System.out.println("" + h.loadHighScore());
+       	System.out.println("" + h.loadHighScore());
     }
 
     @Override
@@ -85,8 +85,6 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
             }
         }
 
-        // init2();
-        // new Highscore(highscore);
     }
 
     private boolean tick() {
@@ -108,7 +106,7 @@ public class Game extends Canvas implements Runnable { // canvas = ZeichneKlasse
         // TODO add restart game logic
         System.exit(-1);    //schließt das spiel
         //MenuFrame.ButtonAction.restart();
-        //AsyncTask.stop();
+        //AsyncTask.stop();dd
     }
 
     private void render() { // neu rendern(zeichnen) von dem Bild
