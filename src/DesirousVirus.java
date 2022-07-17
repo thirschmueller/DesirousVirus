@@ -1,4 +1,3 @@
-package main;
 import frames.MenuFrame;
 
 public class DesirousVirus {

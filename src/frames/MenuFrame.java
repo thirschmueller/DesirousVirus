@@ -1,35 +1,32 @@
 package frames;
 
-import behavior.AsyncTask;
-import main2.Game;
-import utils.Highscore;
+import utils.AsyncExecutor;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URISyntaxException;
 
 public class MenuFrame {
 
 	private static final JFrame menuFrame = new JFrame();
-	JPanel panel = new JPanel();
-	static JButton button1 = new JButton("Play");
-	static JButton button2 = new JButton("Highscores");
-	static JButton button3 = new JButton("Options");
-	static JButton button4 = new JButton("Exit");
-	private final Component verticalStrut = Box.createVerticalStrut(40);
-	private final Component verticalStrut_1 = Box.createVerticalStrut(40);
-	private final Component verticalStrut_2 = Box.createVerticalStrut(40);
-	private final Component verticalStrut_3 = Box.createVerticalStrut(40);
+	private static final JPanel panel = new JPanel();
+	private static final JButton button1 = new JButton("Play");
+	private static final JButton button2 = new JButton("Highscores");
+	private static final JButton button3 = new JButton("Options");
+	private static final JButton button4 = new JButton("Exit");
 
 	/* Konstruktor für die GUI des Menüs. 
 	 * Hier werden Position, Größe, Abstände, Schrift und Farbe der 4 Buttons festgelegt. 
 	 * Eine Aktion wird soll beim Klicken auf einen Knopf ausgeführt werden*/
 	
 	public MenuFrame() {
+        final Component verticalStrut = Box.createVerticalStrut(40);
+        
 		button1.setAlignmentX(Component.CENTER_ALIGNMENT); // zentriert ausgelegt
 		button1.setBounds(100, 50, 100, 30); // x-Koordinate, y-Koordinate, Breite, Höhe
+		
+		
 
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // vertikal ausgelegt
 		
@@ -37,17 +34,17 @@ public class MenuFrame {
 
 		panel.add(button1); // Hinzufügen des 1. Buttons
 		
-		panel.add(verticalStrut_1);
+		panel.add(verticalStrut);
 		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		panel.add(button2);
 		
-		panel.add(verticalStrut_2);
+		panel.add(verticalStrut);
 		button3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		panel.add(button3);
 		
-		panel.add(verticalStrut_3);
+		panel.add(verticalStrut);
 		button4.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		panel.add(button4);
@@ -91,8 +88,8 @@ public class MenuFrame {
 
 	public static class ButtonAction implements ActionListener {
 
-		final static Game game = new Game();
-		final static JFrame gFrame = new JFrame(Game.title);
+		private final static GameFrame game = new GameFrame();
+		private final static JFrame gFrame = new JFrame(GameFrame.title);
 
 		/* Methode für Aktionen, wenn auf Buttons geklickt wird.
 		 * */
@@ -112,7 +109,7 @@ public class MenuFrame {
 				gFrame.setLocationRelativeTo(null); 					// Fenster wird zentriert
 				gFrame.setVisible(true); 								// zeigt Frame
 
-				new AsyncTask(game); // startet Game Loop in neuem Thread
+				AsyncExecuter.addTask(game); // startet Game Loop in neuem Thread
 			}
 
 			/*Bei "Highscores" wird das Menue geschlossen und neuer Frame mit Highscoredaten geoeffnet.*/

@@ -3,7 +3,8 @@ package entities;
 import java.awt.*;
 
 public abstract class IGameObject {
-    private Rectangle r;
+
+    private final Rectangle r;
     protected double x, y, velX, velY;  // protected, damit es nicht in anderen Klassen ueberschrieben wird --> deshalb unten get- und set-Methoden
 
     public IGameObject(final Rectangle r, final double velX, final double velY) {	//Rechteck ist vordefiniert und wird dann fuer Player und enemies verwendet 
@@ -18,7 +19,7 @@ public abstract class IGameObject {
     public abstract void render(final Graphics g);
 
     /*Methode gibt an, dass die neue Position die alte Postion + die Geschwindigkeit ist.*/
-    public void tick() {
+    public abstract void tick() {
         x += velX;
         y += velY;
     }

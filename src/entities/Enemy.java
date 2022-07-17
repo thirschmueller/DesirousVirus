@@ -4,11 +4,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Enemy extends IGameObject {
-    private BufferedImage enemyImg;
+    private final BufferedImage enemyImg;
 
-    private boolean isLookingLeft;
+    private final boolean isLookingLeft;
     private boolean isDead;
-    private double maxX, scale;
+    private final double maxX, scale;
 
 
     public Enemy(final BufferedImage enemyImg, final double y, final double maxX, final double velX, final double enemyScale, final boolean isLookingLeft) {	
